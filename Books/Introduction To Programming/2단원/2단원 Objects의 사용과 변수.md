@@ -29,7 +29,7 @@ public class MyMessage {
 프로그램에 주석을 다는 것은 매우 중요합니다. 자바에서 우리는 두 가지 방식으로 주석을 달 수 있습니다.
 
 - ‘ // ’는 한 줄에서 주석의 시작을 의미하며 그 줄의 끝까지 주석으로 처리합니다.
-- ‘ /* */ ‘ 는 몇줄의 주석을 정의합니다.
+- ‘ /\* \*/ ‘ 는 몇줄의 주석을 정의합니다.
 
 주석은 프로그램의 실행에 어떠한 영향도 미치지 않습니다. 마찬가지로, 주석의 사용은 프로그램 코드의 가독성을 향상시킵니다.
 
@@ -58,7 +58,7 @@ object.methodName(parameters)
 
 의미:
 
-object에 대한  method를 호출하며 추가 parameter를 전달할 수 있습니다. method 호출의 효과는 method와 관련된 작업의 실행히며 때로는 값의 반환도 포함됩니다.
+object에 대한 method를 호출하며 추가 parameter를 전달할 수 있습니다. method 호출의 효과는 method와 관련된 작업의 실행히며 때로는 값의 반환도 포함됩니다.
 
 예:
 
@@ -86,18 +86,16 @@ public class MyMessage2 {
 
 println(”…”) method는 문자열 “…”을 출력하고 커서를 새로운 줄로 이동합니다. print(”…”) method는 “…”를 출력하고 대신 커서를 새로운 줄로 이동시키지 않습니다. 따라서, 이후의 출력 명령은 동일한 줄에 출력됩니다. println 메서드는 또한 매개변수 없이 사용하여 커서를 다음 줄로 이동하는데 사용할 수 있습니다.
 
-## 2.4 자바에서 Objects와  Classes
+## 2.4 자바에서 Objects와 Classes
 
 - objects 는 프로그램에 의해 조작될 수 있는 엔티티(개체, 실재)들을 나타냅니다.(일반적으론느 그들의 method를 호출하여)
 - 각 object는 class에 속하며 우리는 그것이 그 class의 instance 라고 말합니다.
-- class는 동일한 속성을 가진 object들의 집합으로 구성됩니다. 이것들을 그 class의  instance 라고 합니다.
+- class는 동일한 속성을 가진 object들의 집합으로 구성됩니다. 이것들을 그 class의 instance 라고 합니다.
 - object가 속한 class는 해당 object에 대해 사용 가능한 method를 결정합니다. (즉, 올바르게 적용할 수 있는 메서드를 결정) 예를 들어 :
-    
-    ```java
-    System.out.print(); //OK
-    System.out.foo(); //ERROR
-    ```
-    
+  ```java
+  System.out.print(); //OK
+  System.out.foo(); //ERROR
+  ```
 
 ## 2.5 The class String
 
@@ -105,7 +103,7 @@ println(”…”) method는 문자열 “…”을 출력하고 커서를 새�
 
 큰따옴표로 둘러싸인 표현식, 예를 들면 “java”는 String class의 obejct를 나타냅니다.(더 정확하게는 String class의 사전에 정의된 객체에 대한 참조) 그리고 이러한 것을 문자열 리터럴(String literals)라고 합니다. 일반적으로 literals는 상수를 나타내므로 String literal은 문자열 유형의 상수를 나타냅니다. String class는 Java 문서에서 다음 표와 같은 여러 메서드를 제공합니다.
 
-![screenshot1.png](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/screenshot1.png)
+![screenshot1](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/bbc51966-a9ac-40d0-bc76-bf313437efd4)
 
 예시:
 
@@ -157,7 +155,7 @@ method를 호출하려면 호출 object와 해당 parameter를 알아야 합니�
 
 예시: “xxx”.concat(”yyy”)
 
-return  the string “xxxyyy”
+return the string “xxxyyy”
 
 - 호출 object: “xxx”
 - parameters: “yyy”
@@ -181,17 +179,17 @@ System.out.println("xxx".concat("yyy").concat("zzz"));
 답을 내기 위해서는 “xxx”.concat(”yyy”).concat(”zzz”) 표현식이 어떻게 계산되는지 이해해야 합니다.
 
 1. 하위 표현식 “xxx”.concat(”yyy”)를 즉시 계산할 수 있습니다.
-    - “xxx”는 호출 object를 나타냅니다.
-    - “yyy”는 parameter를 나타냅니다.
-    - 둘 다 직접 사용할 수 있으므로 “xxxyyy” 문자열을 반환하는 “xxx”.concat(”yyy”)를 계산할 수 있습니다.
+   - “xxx”는 호출 object를 나타냅니다.
+   - “yyy”는 parameter를 나타냅니다.
+   - 둘 다 직접 사용할 수 있으므로 “xxxyyy” 문자열을 반환하는 “xxx”.concat(”yyy”)를 계산할 수 있습니다.
 2. “xxx”.concat(”yyy”)를 계산한 후 concat(”zzz”)를 계속할 수 있습니다.
-    - “xxxyyy”는 호출 object를 나타냅니다.
-    - “zzz”는 parameter를 나타냅니다.
-    - 이제 둘 다 상용할 수 있으므로 “xxxyyy”.concat(”zzz”)문자열을 반환하는 “xxxyyyzzz”를 계산할 수 있습니다.
+   - “xxxyyy”는 호출 object를 나타냅니다.
+   - “zzz”는 parameter를 나타냅니다.
+   - 이제 둘 다 상용할 수 있으므로 “xxxyyy”.concat(”zzz”)문자열을 반환하는 “xxxyyyzzz”를 계산할 수 있습니다.
 
 따라서 System.out.println(”xxx”.concat(”yyy”).concat(”zzz”)); “xxxyyyzzz”를 표시합니다.
 
-호출 object를 나타내는 식의 평가는 호출 object를 계산하고  method를 호출하여 왼쪽에서 오른쪽으로 수행됩니다.
+호출 object를 나타내는 식의 평가는 호출 object를 계산하고 method를 호출하여 왼쪽에서 오른쪽으로 수행됩니다.
 
 ## 2.10 Method의 parameter를 나타내는 표현식 계산
 
@@ -204,13 +202,13 @@ System.out.println("xxx".concat("yyy".concat("zzz")));
 답변을 제공하려면 “xxx”.concat(”yyy”.concat(”zzz”)) 표현식이 어떻게 계산되는지 이해해야 합니다.
 
 1. 하위 표현식 “yyy”.concat(”zzz”)를 즉시 계산할 수 있습니다.
-    - “yyy”는 호출 object를 나타냅니다.
-    - “zzz”는 parameter를 나타냅니다.
-    - 둘 다 직접 사용할 수 있으므로 “yyy”.concat(”zzz”)를 계산할 수 있으며 “yyyzzz”문자열을 반환합니다.
+   - “yyy”는 호출 object를 나타냅니다.
+   - “zzz”는 parameter를 나타냅니다.
+   - 둘 다 직접 사용할 수 있으므로 “yyy”.concat(”zzz”)를 계산할 수 있으며 “yyyzzz”문자열을 반환합니다.
 2. “yyy”.concat(”zzz”)를 계산한 수 “xxx”.concat(…)을 계속할 수 있습니다.
-    - “xxx”는 호출 object를 나타냅니다.
-    - “yyyzzz”는 항목 1에서 계산된 parameter를 나타냅니다.
-    - 이제 둘 다 사용할 수 있으므로 “xxx”.concat(”yyyzzz”) 문자열을 반환하는 “xxxyyyzzz”를 계산할 수 있습니다.
+   - “xxx”는 호출 object를 나타냅니다.
+   - “yyyzzz”는 항목 1에서 계산된 parameter를 나타냅니다.
+   - 이제 둘 다 사용할 수 있으므로 “xxx”.concat(”yyyzzz”) 문자열을 반환하는 “xxxyyyzzz”를 계산할 수 있습니다.
 
 따라서 System.out.println(”xxx”.concat(”yyy”.concat(”zzz”))); 구문은 “xxxyyyzzz”를 표시합니다.
 
@@ -276,16 +274,16 @@ Java2에서 line은 “java”.toUpperCase() 값을 할당받은 String 유형�
 
 변수의 특징은 다음과 같습니다.
 
-1. 이름: 변수를 식별하기 위해 필요합니다. 이러한 이름은 Java 식별자여야 합니다. 즉, 
-    - 문자 또는 ‘_’로 시작하는 일련의 문자, 숫자 또는 ‘_’ 문자
-    - 길이는 얼마든지 가능합니다.
-    - 소문자와 대문자는 다른 것으로 간주됩니다.
-    - 키워드 라고 하는 일부 식별자(class, public, if, while)은 예약되어 있습니다.(사용불가)
+1. 이름: 변수를 식별하기 위해 필요합니다. 이러한 이름은 Java 식별자여야 합니다. 즉,
+   - 문자 또는 ‘_’로 시작하는 일련의 문자, 숫자 또는 ‘_’ 문자
+   - 길이는 얼마든지 가능합니다.
+   - 소문자와 대문자는 다른 것으로 간주됩니다.
+   - 키워드 라고 하는 일부 식별자(class, public, if, while)은 예약되어 있습니다.(사용불가)
 2. 유형: 변수가 저장할 수 있는 데이터 타입을 지정합니다. 예를 들어 String 유형의 변수는 문자열에 대한 참조를 저장 할 수 있습니다.
 3. 저장된 데이터가 포함된 메모리 위치의 주소:
-    - 각 변수에는 연관된 메모리 위치가 있습니다.
-    - 메모리 위치의 크기는 변수 유형에 따라 다릅니다.
-    - Java에서는 메모리 위치의 주소를 알 수 있는 방법이 없습니다! 이를 통해 바이러스 공격 등 보안과 관련된 여러가지 문제를 해결합니다.
+   - 각 변수에는 연관된 메모리 위치가 있습니다.
+   - 메모리 위치의 크기는 변수 유형에 따라 다릅니다.
+   - Java에서는 메모리 위치의 주소를 알 수 있는 방법이 없습니다! 이를 통해 바이러스 공격 등 보안과 관련된 여러가지 문제를 해결합니다.
 4. 값: 프로그램 실행 중 특정 시점에 변수가 나타내는 데이터. 예: “Java” 객체애 대한 참조
 
 프로그램 실행 중에 변수의 이름, 유형, 주소는 변경할 수 없지만 값은 변경할 수 있습니다.
@@ -312,8 +310,8 @@ type variableName;
 ```
 
 - type은 변수의 타입입니다.
-    - object에 대한 타입 참조 변수의 경우 object가 instance인 calss의 이름입니다.
-    - 그렇지 않으면 사전에 정의된 기본 유형입니다. 단원 4를 참조하세요.
+  - object에 대한 타입 참조 변수의 경우 object가 instance인 calss의 이름입니다.
+  - 그렇지 않으면 사전에 정의된 기본 유형입니다. 단원 4를 참조하세요.
 - variableName은 선언되는 변수의 이름입니다.
 
 의미:
@@ -471,9 +469,9 @@ object 참조 유형의 변수에는 null이라는 특수 값이 있을 수도 �
 
 변수는 object가 저장되는 메모리 위치에 대한 참조입니다. 변수와 해당 값을 나타내기 위해 다음 그래픽 표기법을 사용합니다.
 
-![Untitled](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/Untitled.png)
+![Untitled](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/0190c06b-cd88-4cab-809a-ef87ab2bd66d)
 
-다이어그램은 변수의 이름, 타입, 주소 및 값을 나타냅니다. 값은 일반적으로 참조된 개체를 가리키는 화살표로 표시됩니다. object의 경우 object가 instance인  class 와 상태, 즉 해당 속성의 값을 나타냅니다. 왼쪽 다이어그램은 object 참조 개념을 명확히 하기 위해 메모리 위치의 실제 주소를 보여줍니다. 실제로 Java에서는 object의 주소가 명시적으로 표현되지 않습니다. 즉, 실제로 object를 저장하는 데 사용되는 메모리 위치가 무엇인지 관심이 없습니다.(오른쪽 다이어그램 참조). 변수의 유형은 일반적으로 참조된 object의 타입과 일치하기 때문에 종종 변수의 타입도 생략합니다.(상속으로 인해 항상 그런 것은 아닙니다. 단원 4 참조).
+다이어그램은 변수의 이름, 타입, 주소 및 값을 나타냅니다. 값은 일반적으로 참조된 개체를 가리키는 화살표로 표시됩니다. object의 경우 object가 instance인 class 와 상태, 즉 해당 속성의 값을 나타냅니다. 왼쪽 다이어그램은 object 참조 개념을 명확히 하기 위해 메모리 위치의 실제 주소를 보여줍니다. 실제로 Java에서는 object의 주소가 명시적으로 표현되지 않습니다. 즉, 실제로 object를 저장하는 데 사용되는 메모리 위치가 무엇인지 관심이 없습니다.(오른쪽 다이어그램 참조). 변수의 유형은 일반적으로 참조된 object의 타입과 일치하기 때문에 종종 변수의 타입도 생략합니다.(상속으로 인해 항상 그런 것은 아닙니다. 단원 4 참조).
 
 예: 명령문 실행 후 메모리 상황
 
@@ -486,7 +484,7 @@ u = t;
 
 다음 다이어그램에 나와있습니다.
 
-![screenshot2.png](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/screenshot2.png)
+![screenshot2](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/55d23ac8-cad1-49f3-9d0e-b2c31e921e6e)
 
 ## 2.20 **예: 문자열에 대한 프로그램**
 
@@ -663,7 +661,7 @@ s1 = s2;
 
 s1 및 s2 에 대한 참조는 처음에는 새로 생성된 두 개체에 대한 두 개의 참조입니다. 대입문은 s1 의 참조를 s2 의 참조 (동일한 개체 "test2" 에 대한 두 개의 참조) 와 동일하게 설정하는 반면, 첫 번째 문에서 생성된 개체 "test1" 에 대한 참조는 손실됩니다. (모르면 질문 하세요)
 
-![Untitled](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/Untitled%201.png)
+![Untitled 1](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/ee5c28d1-d01b-4603-aaeb-17a6b7b040c4)
 
 프로그램에 의해 "손실"된 개체가 사용하는 메모리를 복구하는 작업을 **가비지 수집** 이라고 합니다 . Java에서는 이러한 작업이 런타임 시스템(예: Java Virtual Machine)에 의해 자동으로 수행됩니다.
 
@@ -682,7 +680,7 @@ String t2 = "test";
 
 참조 s1과 s2는 서로 다른 object에 대한 참조이고, t1과 t2는 동일한 object에 대한 참조입니다.
 
-![Untitled](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/Untitled%202.png)
+![Untitled 2](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/e61f39d3-4a33-4b4f-9ed0-95e41dc9efd8)
 
 ## 2.28 불변(Immutable) Object
 
@@ -720,7 +718,7 @@ Java에는 String과 매우 유사하지만 instance가 변경 가능한 object�
 
 특히 StringBuffer class에는 object가 나타내는 문자열을 수정하는 method가 있습니다.
 
-![screenshot3.png](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/screenshot3.png)
+![screenshot3](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/b04ea382-7685-4c25-9219-218011bb021b)
 
 ## 2.30 **가변 객체: 부수 작용이 있는 메소드**
 
@@ -747,13 +745,13 @@ public class SideEffect1 {
 
 *참고:* 일반적으로 추가 메소드는 수정된 호출 객체에 대한 참조를 반환하지만 s.append("!"); 문에서는 그러한 참조가 사용되지 않습니다.
 
-![Untitled](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/Untitled%203.png)
+![Untitled 3](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/4d8c4c63-5a5b-4c85-b2b9-4e2e1f7a747b)
 
 ## 2.31 예시: StringBuffer class를 사용한 이름 이니셜
 
 밑에 표는 병훈의 첨부 파일(책 내용X)
 
-![Untitled](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/Untitled%204.png)
+![Untitled 4](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/80ab5e9f-476d-495b-bd98-8dce27b20198)
 
 ```java
 public class SideEffect2 {
@@ -787,13 +785,13 @@ public class KeyboardInput {
 
 - import javax.swing.JOptionPane; - javax.swing 라이브러리에서 JOptionPane 클래스를 가져옵니다.
 - String inputString = JOptionPane.showInputDialog(”문자열을 삽입하세요”);
-    1. “문자열 삽입” 메시지를 표시하는 대화 상자 창(그림 참조)을 생성합니다.
-    2. 키보드에서 문자열을 읽고
-    3. 그러한 문자열을 반환(참조)하고
-    4. inputString변수에 대한 참조를 할당합니다.
-- System.exit(0); 사전에 정의된 라이브러리 class JOptionPane을 사용할 때 기본 method에 추가해야 합니다. 대화 상자 창은  main에 의해 직접 처리되지 않으므로 대화 상자를 종료하려면 명시적인 명령을 제공해야 하기 때문에 이것이 필요합니다.
+  1. “문자열 삽입” 메시지를 표시하는 대화 상자 창(그림 참조)을 생성합니다.
+  2. 키보드에서 문자열을 읽고
+  3. 그러한 문자열을 반환(참조)하고
+  4. inputString변수에 대한 참조를 할당합니다.
+- System.exit(0); 사전에 정의된 라이브러리 class JOptionPane을 사용할 때 기본 method에 추가해야 합니다. 대화 상자 창은 main에 의해 직접 처리되지 않으므로 대화 상자를 종료하려면 명시적인 명령을 제공해야 하기 때문에 이것이 필요합니다.
 
-![Untitled](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/Untitled%205.png)
+![Untitled 5](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/04395610-8c9e-45e6-a5c3-7d0588a70c1a)
 
 ## 2.33 **예: 입력에서 읽은 이름의 이니셜**
 
@@ -833,4 +831,4 @@ public class OutputWindow {
 
 - JOptionPane.showMessageDialog(null,stringToShow); stringToShow 변수 로 표시된 문자열을 표시하는 대화 상자 창(그림 참조)을 만듭니다 . 첫 번째 매개변수의 값이 null 이면 생성해야 하는 창이 기존 창의 하위 창이 아님을 나타냅니다.
 
-![Untitled](2%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20Objects%E1%84%8B%E1%85%B4%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%80%E1%85%AA%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%AE%2057d99d57ecb34cb18e28e141db6c2762/Untitled%206.png)
+![Untitled 6](https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/92933a93-0486-47e0-b4f2-b3f92e7c7e21)
