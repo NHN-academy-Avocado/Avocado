@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
+  <component name="CheckStyle-IDEA-Module" serialisationVersion="2">
+    <option name="activeLocationsIds" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="eb3aabc3-6135-4558-b68c-5cf8334df233" />
   </component>
