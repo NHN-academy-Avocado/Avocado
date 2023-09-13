@@ -1,0 +1,414 @@
+== 1단원: Introduction to programming
+
+summary
+
+컴퓨터의 구조
+
+* 프로그래밍언어
+* 프로그램은 오브젝트(객체) + 오퍼레이션(연산) //여기서의 오브젝트는
+데이터 오퍼레이터는 메서드
+* 첫번째 자바 프로그램
+* 쓰기, 컴파일, 프로그램 실행
+* 프로그램 에러
+
+=== 1.1 컴퓨터란?
+
+* 하드웨어
+** 프로세서(CPU)
+** 메모리
+** 입/출력 유닛
+* 어떻게 작동 할까요
+** 아주 간단 지침을 실행한다
+** 아주 빠르게 실행한다
+** 반드시 프로그램 되어야 한다 : 앞의 말은 소프트웨이다(프로그램이라
+알려진) 프로그램은 컴퓨터가 실제로 무엇을 하는지 나타낸다
+
+=== 1.2 컴퓨터의 구성 요소
+
+.Untitled
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/e6becf3d-85ba-4a27-af77-3bd695d58781[Untitled]
+
+=== 1.3 간소화된 컴퓨터의 구조
+
+사진 참조 (봐도 잘 모르겠다면 시스템 버스를 찾아보세요)
+
+.Untitled 1
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/fa2949ac-6eb6-40f5-8b4b-f099fefde9d4[Untitled
+1]
+
+=== 1.4 컴퓨터를 프로그래밍 하기 위한 언어들
+
+* 기계어
++
+21 40 16 100 163 240 // (사실 2진수 였던것 같은데…)
+* 어셈블리 어
++
+iload intRate bipush 100 if_icmpgt intError
+* 고급 프로그래밍 언어
++
+if (intRate > 100) …
+
+<저급언어 —————-——-고급언어>
+
+기계어/ 어셈블리어 /고급프로그래밍언어
+
+=== 1.5 프로그램
+
+프로그램은 ``컴퓨터가 실질적으로 무엇을 하는가'' 를 특징짓는다
+
+하나의 프로그램은(언어와 상관 없이) 기본적인 두 부분으로 구성된다
+
+* 프로그램(도메인 관점)에 관한 정보(데이터)의 하나의 표현이다 : 객체
+* ``표현(위에나온)을 어떻게 다루는지''의 설명이다 : 연산
+
+프로그램을 작성하기 위해선 반드시 두 가지 요소를 고려해야한다
+
+=== 1.6 예시 : 콜센터
+
+적용: 우리는 전화번호 요청을 처리하는 콜센터용 프로그램을 구현하고
+싶습니다. 구체적으로, 특정 클라이언트가 특정 도시의 특정 인물 이름과
+관련된 전화번호를 요청하고, 교환원은 해당 도시의 전화번호부를 선택하고
+그곳에서 해당 인물 이름에 해당하는 전화번호를 검색하여 요청에 응답한다.
+
+* 객체
+** 클라이언트
+** 운영자
+** 전화번호 부
+** 전화번호, 사람이름, 도시 - 이것들은 문자열로만 이루어져 있다
+* 연산
+** 특정 도시의 주어진 사람 이름에 대한 전화번호 요청, 고객님에 의해
+수행됨
+** 요청된 도시의 전화번호부 선택, 운영자에 의해 수행됨
+** 전화번호부에서 요천된 사람 이름에 해당되는 전화번호 검색
++
+프로그램은 작동하는 모든 객체를 표현하고 모든 작업을 실현해야 합니다.
+
+=== 1.7 도메인(영역)의 표현 : 객체
+
+* 같은 타입의 그룹 객체는 클래스 안에 들어간다
+* 클래스들 사이에서 관계를 설정한다 (즉 어떻게 다른 클래스의 객체들이
+서로 연결되어 있는가를 설정한다)
+* 각 클래스에 속하는 객체의 _속성(밑 참조)을_ 설정합니다.
+* _선택한 프로그래밍 언어_ 로 클래스들(클래스들간의 관계들)과 속성을
+구현한다
+
+💡 여기서의 properties는 프로그래밍 중 객체지향 용어이다
+
+https://en.wikipedia.org/wiki/Property_(programming)
+
+https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0_(%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D)[https://ko.wikipedia.org/wiki/프로퍼티_(프로그래밍)]
+
+=== 1.8 클래스 다이어그램
+
+클래스들과 클래스간의 관계들을 명백하게 만들기 위해 우리는 클래스
+다이어그램을 사용할 수 있다
+
+* 각 클래스는 하나의 클래스 이름을 담고있는 사각형 으로 표현 된다
+* 클래스들간의 관계는 화살표로 표현된다 : 화살은 일반적인 사용 관계와
+같이 단순화된 형태로 클래스 간의 관계를 나타냅니다.
+* 클래스의 속성은 표시되지 않습니다.
+
+예시 : 콜센터의 어플리케이션의 클래스다이어그램
+
+표 참조
+
+.Untitled 2
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/f4c90505-fd75-428b-bf99-9e3ec9ef4e00[Untitled
+2]
+
+클래스 다이어그램은 소프트웨어 설계에 일반적으로 사용됩니다. 
+
+예를 들어, 소프트웨어 설계의 사실상 표준 형식인 UML(Unified Modeling
+Language)을 사용하면 매우 정교한 클래스 다이어그램을 개발할 수 있습니다.
+
+=== 1.9 연산의 구현 : 알고리즘
+
+*반적으로 우리는 특정 문제를* 해결해야 할 때 작업을 수행합니다 .
+
+예로 사람의 이름이 주어지고 전화번호부 안에서해당된 전화번호를 찾아라
+
+문제 해결을 컴퓨터로 해결하려면 문제를 해결하는 알고리즘을 찾아야
+합니다.
+
+*알고리즘(Algorithm)* : _문제의 해결책을 얻는 절차. 즉, 순차적으로
+실행될 때 입력으로 제공된 정보에서 시작하여 문제의 해결책을 계산할 수
+있도록 하는 일련의 명령입니다_
+
+알고리즘의 특징은 다음과 같습니다.
+
+* 모호하지 않다 : 명령은 실행하는 사람이 고유한 방식으로 해석할 수
+있어야 합니다.
+* 실행 가능성 : 사용 가능한 리소스가 주어진 각 명령을 (제한된 시간 내에)
+실행할 수 있어야 합니다.
+* 유한성 : 알고리즘의 실행은 가능한 각 입력 데이터 세트에 대해 유한한
+시간 내에 종료되어야 합니다.
+
+_알고리즘의 예_ : 요청한 이름을 찾을 때까지 레지스트리에 나타나는 사람
+이름을 차례로 검색합니다. 관련 전화번호를 반환합니다.
+
+동일한 문제를 해결하는 다른 알고리즘이 있습니까? 예!
+
+_알고리즘을 찾거나 개발한 후에는 선택한 프로그래밍 언어로 이를 코딩 해야
+합니다._
+
+패러다임(영어: paradigm)은 **어떤 한 시대 사람들의 견해나 사고를
+근본적으로 규정하고 있는 테두리로서의 인식의 체계, 또는 사물에 대한
+이론적인 틀이나 체계**를 의미하는 개념이다. 이론적인 틀 방법의 틀
+
+=== 1.10 프로그램 패러다임
+
+개체와 작업이라는 두 가지 기본 측면을 강조하는 방식이 다른 여러
+프로그래밍 패러다임이 있습니다.
+
+주요 프로그래밍 패러다임은 다음과 같습니다.
+
+* 임프렉티브(명령형) : 명령형 프로그래밍에서는 프로그램의 상태 변화를
+일으키는 연산 또는 명령어에 중점을 둡니다. 객체는 연산에 기능적이다.
+* 펑셔널(함수형) : 함수형 프로그래밍에서는 결과를 계산하는 함수에 중점을
+둡니다. 객체는 연산에 기능적이다.
+* 오브젝트오리엔티드(객체지향) : 객체 지향 프로그래밍에서는 도메인의
+관점에서 표현하는 객체에 중점을 둡니다. 연산(또는 메서드)은 이러한
+객체의 표현과 상호작용하는 데 중요한 역할을 합니다.
++
+.Untitled 3
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/8db8dd8f-41f0-4815-8388-d27d27b6f849[Untitled
+3]
+
+보통 프로그램에서 다양한 프로그래밍 패러다임이 사용된다. 따라서,
+프로그래밍 언어들은 다양한 패러다임에 대해 (다양한 정도로) 지원을
+제공합니다.
+
+=== 1.11 Java
+
+이 코스에선 우리는 자바 프로그래밍 언어를 사용합니다
+
+자바는 현대, 고급 ,객체지향 프로그래밍 언어이다. 자바는 또한 명령형 및
+함수형 프로그래밍 패러다임도 지원합니다
+
+자바의 일반적인 특징:
+
+* 간단함
+* 플랫폼 독립적임
+* 다양한 장 개발된 라이브러리를 가지고 있다
+* 인터넷 사용을 위해 디자인 되어있다
+* 버츄얼 머신을 기반으로 하고 있다(나중에 또나옴)
+* 안전하다(가상 머신은 인터넷을 통해 실행되는 애플리케이션에 대한 원치
+않는 액세스를 금지합니다)
+
+=== 1.12 The first Java program
+
+[source,java]
+----
+import java.lang.*;
+public class First {
+    public static void main(String[] args) {
+        System.out.println("This is my first Java program.");
+    }
+}
+----
+
+명령문의 의미는 다음과 같습니다.
+
+* import java.lang.*; 미리 정의된 클래스/프로그램의 라이브러리를
+사용하도록 요청합니다. (실제로 java.lang 라이브러리는 자동으로
+임포트되므로 이 명령문은 생략 가능합니다.)
+* public class First \{…} First 라는 클래스/프로그램 정의
+* public static void main(String[] args) \{…} 기본 메소드 정의 (메소드는
+Java에서 작업을 구현한 것입니다)
+* System.out.println(``이것은 나의 첫 번째 Java
+프로그램입니다.''); 비디오에 메시지를 출력하는 명령문
+* System.out 사전 정의된 클래스 /PrintStream 의 사전 정의된 개체인스턴스
+* println 메소드 System.out 객체에 적용된 PrintStream 클래스의
+* “``This is my first Java program.'' 표시할 문장을
+나타내는 String 클래스의 객체
+
+_참고: Java는 *대소문자를 구분합니다* . 즉, 소문자와 대문자 사이에
+차이가 있습니다_ . 예를 들어, class 는 Class 와 다릅니다 .
+
+=== 1.13 Second program
+
+[source,java]
+----
+public class Second {
+    public static void main(String[] args) {
+        System.out.println("This is my second Java program ...");
+        System.out.println("... and it will not be my last one.");
+    }
+}
+----
+
+두 명령문의 순서는 두 명령문이 프로그램에 나타나는 순서대로 실행된다는
+것을 의미합니다.
+
+=== 1.14 *Java 프로그램 작성, 컴파일 및 실행*
+
+[arabic]
+. 프로그램 텍스트 준비
+. 프로그램의 컴파일
+. 컴파일된 프로그램의 실행
+
+==== 1. 프로그램 텍스트 작성
+
+프로그램 텍스트를 준비하려면 프로그램이 포함된 파일을 작성해야
+합니다. Java 프로그램의 경우 파일 이름은 다음과 같아야 합니다
+
+_클래스 이름_ .java
+
+여기서 _ClassName은_ 프로그램에 정의된 클래스의
+이름입니다. 예: First.java
+
+이 프로그램은 텍스트 파일을 작성할 수 있는 모든 프로그램( _편집기_ )으로
+작성할 수 있습니다. 예: 메모장, Emacs, …
+
+.Untitled 4
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/568310d4-92fd-434b-9407-aff1483d2658[Untitled
+4]
+
+==== 2. 프로그램의 컴파일레이션(해석, 번역)
+
+프로그램을 컴퓨터에서 직접 실행할 수 있는 일련의 명령으로 변환하려면
+프로그램 컴파일이 필요합니다. Java SDK(Java Standard Development Kit)의
+일부인 표준 Java 컴파일러는 javac 입니다 . 이를 사용하려면 다음 명령을
+실행해야 합니다.
+
+____
+javac 클래스명 .java
+____
+
+컴파일 하면 컴퓨터에서 직접 실행할 수 있는 명령이
+포함된 _ClassName_ .class 라는 파일이 생성됩니다 . 예를 들어:
+
+____
+javac First.java
+____
+
+First.class 파일을 생성합니다 .
+
+.Untitled 5
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/146211cf-e424-4529-9449-3b5b5a2bdd33[Untitled
+5]
+
+==== 3. 컴파일된 프로그램의 실행
+
+프로그램은 컴파일된 후에만 실행될 수 있습니다.
+즉, ClassName.class 파일이 있을 때입니다 .
+
+Java에서는 프로그램 실행이 명령을 통해 수행됩니다.
+
+____
+자바 클래스 이름
+____
+
+(.class 제외 ). 예를 들어 다음 명령은
+
+____
+자바 First
+____
+
+First 프로그램 (또는 더 정확하게는 First 클래스의 기본 메서드 )을
+실행하여 화면에 인쇄합니다
+
+This is my first Java program.
+
+.Untitled 6
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/bbe592fe-1d1f-4aeb-b87e-3fe215d35a78[Untitled
+6]
+
+==== 프로그래밍 환경
+
+프로그램 작성, 컴파일, 실행의 다양한 단계를 통합된 방식으로 수행할 수
+있는 _프로그래밍 환경_ 이라는 애플리케이션이 있습니다 .
+
+Java 프로그래밍 환경의 예로는 JavaONE, JBuilder, JCreator, ecc가
+있습니다. 다음 그림은 호주 모나쉬 대학교(호주 남부 덴마크 대학교)에서
+교육 목적으로 개발한 프로그래밍 환경인 BlueJ의 스크린샷을 보여줍니다.
+
+.Untitled 7
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/12758970-bdab-4f3f-9ff9-1fd0e415b361[Untitled
+7]
+
+=== 1.15 *소스코드부터 실행 가능한 프로그램까지(요약)*
+
+.Untitled 8
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/eda12f46-f812-4235-910d-9416c8bb1e63[Untitled
+8]
+
+==== 1.16 *Java 이식성에 대한 참고 사항 (이식성이란 소프트웨어가 한 컴퓨터 시스템이나 환경에서 다른 시스템이나 환경으로 쉽게 옮겨질 수 있는 성질)*
+
+실제로 Java 컴파일러는 컴퓨터에서 직접 실행할 수 있는 코드를 생성하지
+않습니다. 대신 특정 컴퓨터와 독립적이며 *Java 바이트코드* 라고 하는
+코드를 생성합니다 .
+
+따라서 Java 프로그램의 컴파일 결과는 _플랫폼 독립적_ 입니다 . 이를
+위해서는 바이트코드를 실행할 수 있는 특정 프로그램, 즉 java 명령을 통해
+활성화되는 *Java Virtual Machine* 으로 알려진 바이트코드 해석기의 사용이
+필요합니다 .
+
+일부 플랫폼에서 컴파일된 Java 프로그램을 실행하려면 Java 바이트코드에
+대한 인터프리터(JDK)가 있으면 충분합니다. 플랫폼으로부터의 이러한
+독립성은 Java의 매우 빠른 확산을 가져온 Java의 특징이 되는 기능 중
+하나입니다
+
+==== 1.17 Errors
+
+다음 프로그램에는 다양한 오류가 포함되어 있습니다.
+
+[source,java]
+----
+public class Errors {
+  public static void main(String[] args) {
+    System.out.println("These are my first Java errors ...")
+    Sistem.out.println("... and they will not be the last ons!!!");
+  }
+}
+----
+
+다음 프로그램에는 다양한 오류가 포함되어 있습니다.
+
+[source,java]
+----
+public class Errors {
+  public static void main(String[] args) {
+    System.out.println("These are my first Java errors ...");
+    System.out.println("... and they will not be the last ones!!!");
+  }
+}
+----
+
+오류 유형:
+
+* 구**문 오류** : _언어의 구문 규칙을 위반하여 발생하는 오류입니다_
+** • 예: System.out.println(…) - 마지막 `;' 누락
+** • 구문 오류는 컴파일러에 의해 감지됩니다.
+
+.Untitled 9
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/f66a3dfc-9787-4366-860a-7c71b5c9fde6[Untitled
+9]
+
+* *의미론적 오류(Semantic error)* , _프로그램 명령문에 의미를 부여할 수
+없어서 발생하는 오류_
+** 예: Sistem.out.println(…); - 시스템 이라는 단어에 철자 오류가
+있습니다
+** 이러한 오류 중 일부는 컴파일러에 의해 감지되고(정적 의미 오류) 일부는
+런타임에만 감지됩니다(동적 의미 오류).
+
+.Untitled 10
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/ea9a05ac-f0b5-4f2f-b5af-aa8a6de748a8[Untitled
+10]
+
+* _프로그램이 예상한 기능과 다른 기능을 구현함으로써 발생하는
+오류인_ 논리적 *오류*
+** 예: System.out.println(``… and they will not be the last ons!!!''); -
+인쇄할 문자열이 올바르지 않습니다.
+** • 논리적 오류는 프로그램을 분석하거나 테스트해야만 발견할 수
+있습니다.
+
+.Untitled 11
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/ed3bb7f2-8bad-4bb7-98b5-7ea54c0863d6[Untitled
+11]
+
+=== 1.18 *The edit-compile-verify cycle*
+
+.Untitled 12
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/84126160/f9036d97-24f4-4e8f-b8a7-df72909e7cc0[Untitled
+12]
