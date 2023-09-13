@@ -4,19 +4,18 @@
 
 다음과 같은 자바 프로그램을 고려해보자.
 
-## [source,java]
-
+[source,java]
+----
 public class MyMessage {
-public static void main(String[] args) {
-//What does this program do?
-/_ Do you know it?
-It’s easy. _/
-System.out.println("JA");
-System.out.println("VA");
+  public static void main(String[] args) {
+    //What does this program do?
+    //_ Do you know it?
+    // It’s easy.
+    System.out.println("JA");
+    System.out.println("VA");
 }
 }
-
----
+----
 
 ==== 프로그램의 폼
 
@@ -64,9 +63,11 @@ Note: 일반적으로 자바는 Class 이름이 대문자로 시작하고 method
 
 구문:
 
-## [source,java]
+[source,java]
+----
+object.methodName(parameters)
+----
 
-## object.methodName(parameters)
 
 - object 는 호출 object를 나타내는 참조입니다.
 - methodName(…)은 호출 method 입니다.
@@ -80,9 +81,10 @@ method 호출의 효과는 method와 관련된 작업의 실행히며 때로는 
 
 예:
 
-## [source,java]
-
-## System.out.println(”Ciao!”);
+[source,java]
+----
+System.out.println(”Ciao!”);
+----
 
 - System.out 은 호출 obejct를 나타내는 참조입니다.
 - println(…)은 호출 method입니다.
@@ -95,17 +97,16 @@ object에 작업을 수행합니다.
 
 === 2.3 method print와 println의 차이
 
-## [source,java]
-
+[source,java]
+----
 public class MyMessage2 {
-public static void main(String[] args) {
-System.out.print("JA");
-System.out.print("VA");
-System.out.println();
+  public static void main(String[] args) {
+    System.out.print("JA");
+    System.out.print("VA");
+    System.out.println();
+  }
 }
-}
-
----
+----
 
 println(”…”) method는 문자열 `…''을 출력하고 커서를 새로운 줄로
 이동합니다. print(”…”) method는 `…''를 출력하고 대신 커서를 새로운 줄로
@@ -124,10 +125,11 @@ println 메서드는 또한 매개변수 없이 사용하여 커서를 다음 �
 - object가 속한 class는 해당 object에 대해 사용 가능한 method를
   결정합니다. (즉, 올바르게 적용할 수 있는 메서드를 결정) 예를 들어 :
 
-* ## [source,java]
-  System.out.print(); //OK
-  System.out.foo(); //ERROR
-  ---
+[source,java]
+----
+System.out.print(); //OK
+System.out.foo(); //ERROR
+----
 
 === 2.5 The class String
 
@@ -144,17 +146,18 @@ literals는 상수를 나타내므로 String literal은 문자열 유형의 상�
 .screenshot1
 image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/bbc51966-a9ac-40d0-bc76-bf313437efd4[screenshot1]
 
+
 예시:
 
-## [source,java]
-
+[source,java]
+----
 public class MyMessage3 {
-public static void main(String[] args) {
-System.out.println("java".toUpperCase());
+  public static void main(String[] args) {
+    System.out.println("java".toUpperCase());
+  }
 }
-}
+----
 
----
 
 String class의 method인 toUpperCase()는 문자열을 대문자로 바꾸어줍니다.
 이 경우에서 `java''라는 literal을 나타내는 object에서 toUpperCase가
@@ -231,9 +234,10 @@ return the string ``xxxyyy''
 
 다음 명령문은 무엇을 표시할까요?
 
-## [source,java]
-
-## System.out.println("xxx".concat("yyy").concat("zzz"));
+[source,java]
+----
+System.out.println("xxx".concat("yyy").concat("zzz"));
+----
 
 답을 내기 위해서는 ``xxx''.concat(”yyy”).concat(”zzz”) 표현식이 어떻게
 계산되는지 이해해야 합니다.
@@ -261,9 +265,10 @@ return the string ``xxxyyy''
 
 다음 명령문은 무엇을 표시할까요?
 
-## [source,java]
-
-## System.out.println("xxx".concat("yyy".concat("zzz")));
+[source,java]
+----
+System.out.println("xxx".concat("yyy".concat("zzz")));
+----
 
 답변을 제공하려면 ``xxx''.concat(”yyy”.concat(”zzz”)) 표현식이 어떻게
 계산되는지 이해해야 합니다.
@@ -293,9 +298,10 @@ parameter를 나타내는 표현식의 계산은 내부에서 외부로 이루�
 Static mathod는 호출 object가 필요하지 않은 method 입니다. static method
 호출 구문은 다음과 같습니다.
 
-## [source,java]
-
-## ClassName.methodName(parameters)
+[source,java]
+----
+ClassName.methodName(parameters)
+----
 
 - ClassName은 method가 속한 class 입니다. (즉, method가 정의된 class)
 - methodNAme(…)은 호출된 method입니다..
@@ -309,9 +315,10 @@ method의 class를 지정해야 하기 때문입니다.
 
 예시:
 
-## [source,java]
-
-## JOptionpane.showInputDialog("문자열을 삽입하세요")
+[source,java]
+----
+JOptionpane.showInputDialog("문자열을 삽입하세요")
+----
 
 이는 미리 정의된 JOptionpane class에 정의된 showInputDialog method의
 호출입니다. 이 method에는 String 유형의 `문자열을 삽입하세요''
@@ -327,32 +334,30 @@ Note: class의 기본 method는 반환 유형이 void이고 매개변수로 Stri
 
 예시:
 
-## [source,java]
-
+[source,java]
+----
 public class Java1 {
-public static void main(String[] args) {
-System.out.println("java".toUpperCase());
-System.out.println("java".toUpperCase());
+  public static void main(String[] args) {
+    System.out.println("java".toUpperCase());
+    System.out.println("java".toUpperCase());
+  }
 }
-}
-
----
+----
 
 ``java''.toUpperCase() 표현식은 두 번 실행됩니다. 이를 방지하기 위해 이
 표현식의 평가 결과를 변수에 저장하고 인쇄에 재사용할 수 있습니다.
 
-## [source,java]
-
+[source,java]
+----
 public class Java2 {
-public static void main(String[] args) {
-String line;
-line = "java".toUpperCase();
-System.out.println(line);
-System.out.println(line);
+  public static void main(String[] args) {
+    String line;
+    line = "java".toUpperCase();
+    System.out.println(line);
+    System.out.println(line);
+  }
 }
-}
-
----
+----
 
 Java2에서 line은 ``java''.toUpperCase() 값을 할당받은 String 유형의
 변수이며, 이 변수는 두 번 표시됩니다.
@@ -409,9 +414,10 @@ Note: 변수에 object에 대한 참조가 포함되어 있더라도 우리는 �
 
 구문:
 
-## [source,java]
-
-## type variableName;
+[source,java]
+----
+// type variableName;
+----
 
 - type은 변수의 타입입니다.
   ** object에 대한 타입 참조 변수의 경우 object가 instance인 calss의
@@ -427,9 +433,10 @@ Note: 변수에 object에 대한 참조가 포함되어 있더라도 우리는 �
 
 예시:
 
-## [source,java]
-
-## String line;
+[source,java]
+----
+String line;
+----
 
 - String 은 변수의 타입입니다.
 - line은 변수의 이름입니다.
@@ -439,20 +446,21 @@ Note: 변수에 object에 대한 참조가 포함되어 있더라도 우리는 �
 
 단일 선언으로 동일한 유형의 여러 변수를 선언할 수 있습니다.
 
-## [source,java]
-
-## type variableName-1, variableName-2, ..., variableName-n;
+[source,java]
+----
+// type variableName-1, variableName-2, ..., variableName-n;
+----
 
 이러한 선언은 다음과 같습니다.
 
-## [source,java]
+[source,java]
+----
+// type variableName-1;
+// type variableName-2;
+// ...
+// type variableName-n;
 
-type variableName-1;
-type variableName-2;
-...
-type variableName-n;
-
----
+----
 
 === 2.16 할당
 
@@ -460,9 +468,10 @@ type variableName-n;
 
 구문:
 
-## [source,java]
-
-## variableName = expression;
+[source,java]
+----
+// variableName = expression;
+----
 
 - variableName은 변수의 이름입니다.
 - expression은 평가 시 변수 유형의 값을 반환해야 하는 표현식입니다.
@@ -476,9 +485,10 @@ variableName 변수에는 = 기호 오른쪽에 있는 표현식의 값이 할�
 
 예:
 
-## [source,java]
-
-## line = "자바";
+[source,java]
+----
+// line = "자바";
+----
 
 - line은 String 유형의 변수입니다.
 - `자바''는 String 유형의 값, 특히 `자바'' 자체를 반환하는 (매우
@@ -488,9 +498,10 @@ variableName 변수에는 = 기호 오른쪽에 있는 표현식의 값이 할�
 
 예시: 다음의 의미는 무엇일까요?
 
-## [source,java]
-
-## s = s.concat("yyy");
+[source,java]
+----
+s = s.concat("yyy");
+----
 
 실행의 과정은 다음과 같습니다:
 
@@ -515,48 +526,47 @@ Note: 과제는 동일성 테스트(단원 4에서 살펴보게 됨)와 다릅�
 
 예시: 다음 프로그램에는 의미 오류가 포함되어 있습니다.
 
-## [source,java]
-
+[source,java]
+----
 public class Java3 {
-public static void main(String[] args) {
-String line;
-System.out.println(line);
-System.out.println(line);
+  public static void main(String[] args) {
+    String line;
+    System.out.println(line);
+    System.out.println(line);
+  }
 }
-}
-
----
+----
 
 변수 line은 인쇄를 요청하기 전에 초기화되지 않습니다.(오류는 컴파일
 타임에 감지됩니다.)
 
 변수는 선언되는 순간 다음 명령문을 통해 초기화될 수 있습니다.
 
-## [source,java]
-
-## type variableName = expression;
+[source,java]
+----
+type variableName = expression;
+----
 
 Java에서 위의 명령문은 다음과 동일합니다.
 
-## [source,java]
-
+[source,java]
+----
 type variableName;
 variableName = expression;
-
----
+----
 
 예시:
 
-## [source,java]
+[source,java]
+----
+String line = "java".toUpperCase();
+----
 
-## String line = "java".toUpperCase();
-
-## [source,java]
-
+[source,java]
+----
 String line;
 line = "java".toUpperCase();
-
----
+----
 
 === 2.18 Object 참조
 
@@ -575,12 +585,11 @@ object가 할당된 메모리 위치의 주소).
 
 예시:
 
-## [source,java]
-
+[source,java]
+----
 String s;
 s = "xxx";
-
----
+----
 
 첫 번째 문은 String 유형의 변수 s를 선언합니다. 이러한 변수는 아직
 초기화되지 않았습니다. 두 번째 명령문은 ``xxx''로 표시된 개체에 대한
@@ -590,13 +599,12 @@ s = "xxx";
 
 예시:
 
-## [source,java]
-
+[source,java]
+----
 String s, t;
 s = "xxx";
 t = s;
-
----
+----
 
 이 두 명령문 뒤에는 t와 s 모두 ``xxx''로 표시된 object에 대한 참조가
 포함되어 있습니다.
@@ -626,14 +634,13 @@ instance인 class 와 상태, 즉 해당 속성의 값을 나타냅니다. 왼�
 
 예: 명령문 실행 후 메모리 상황
 
-## [source,java]
-
+[source,java]
+----
 String s, t, u;
 s = "xxx";
 t = "yyy";
 u = t;
-
----
+----
 
 다음 다이어그램에 나와있습니다.
 
@@ -642,107 +649,105 @@ image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/55d23ac8-c
 
 === 2.20 _예: 문자열에 대한 프로그램_
 
-## [source,java]
-
+[source,java]
+----
 public class Hamburger {
-public static void main(String[] args) {
-String s,t,u,v,z;
-s = "ham";
-t = "burger";
-u = s.concat(t);
-v = u.substring(0,3);
-z = u.substring(3);
-System.out.println("s = ".concat(s));
-System.out.println("t = ".concat(t));
-System.out.println("u = ".concat(u));
-System.out.println("v = ".concat(v));
-System.out.println("z = ".concat(z));
+  public static void main(String[] args) {
+    String s,t,u,v,z;
+    s = "ham";
+    t = "burger";
+    u = s.concat(t);
+    v = u.substring(0,3);
+    z = u.substring(3);
+    System.out.println("s = ".concat(s));
+    System.out.println("t = ".concat(t));
+    System.out.println("u = ".concat(u));
+    System.out.println("v = ".concat(v));
+    System.out.println("z = ".concat(z));
+  }
 }
-}
-
----
+----
 
 === 2.21**예: 문자열 연결**
 
 변수와 할당을 사용하여 문자열 ``xxxyyyzzz'' 구성:
 
-## [source,java]
-
+[source,java]
+----
 String x = "xxx", y = "yyy", z = "zzz";
 String temp = x.concat(y);
 String result = temp.concat(z);
 System.out.println(result);
-
----
+----
 
 각 객제나 각 중간 결과마다 하나의 변수를 사용합니다.
 
 === 2.22 _예: 이름의 이니셜_
 
-## [source,java]
-
+[source,java]
+----
 public class JFK {
-public static void main(String[] args) {
-String first = "John";
-String middle = "Fitzgerald";
-String last = "Kennedy";
-String initials;
-String firstInit, middleInit, lastInit;
-firstInit = first.substring(0,1);
-middleInit = middle.substring(0,1);
-lastInit = last.substring(0,1);
-initials = firstInit.concat(middleInit);
-initials = initials.concat(lastInit);
-System.out.println(initials);
-}
+  public static void main(String[] args) {
+    String first = "John";
+    String middle = "Fitzgerald";
+    String last = "Kennedy";
+    String initials;
+    String firstInit, middleInit, lastInit;
+    firstInit = first.substring(0,1);
+    middleInit = middle.substring(0,1);
+    lastInit = last.substring(0,1);
+    initials = firstInit.concat(middleInit);
+    initials = initials.concat(lastInit);
+    System.out.println(initials);
+  }
 }
 
 // or simply
 public class JFK2 {
-public static void main(String[] args) {
-String first = "John";
-String middle = "Fitzgerald";
-String last = "Kennedy";
-System.out.println(first.substring(0,1).
-concat(middle.substring(0,1)).
-concat(last.substring(0,1)));
-}
+  public static void main(String[] args) {
+    String first = "John";
+    String middle = "Fitzgerald";
+    String last = "Kennedy";
+    System.out.println(first.substring(0,1).
+    concat(middle.substring(0,1)).
+    concat(last.substring(0,1)));
+  }
 }
 
----
+----
 
 === 2.23 _문자열 연결을 위해 `` + '' 사용_
 
-## [source,java]
-
+[source,java]
+----
 public class JFK {
-public static void main(String[] args) {
-String first = "John";
-String middle = "Fitzgerald";
-String last = "Kennedy";
-String initials;
-String firstInit, middleInit, lastInit;
-firstInit = first.substring(0,1);
-middleInit = middle.substring(0,1);
-lastInit = last.substring(0,1);
-initials = firstInit + middleInit + lastInit;
-System.out.println(initials);
-}
+  public static void main(String[] args) {
+    String first = "John";
+    String middle = "Fitzgerald";
+    String last = "Kennedy";
+    String initials;
+    String firstInit, middleInit, lastInit;
+    firstInit = first.substring(0,1);
+    middleInit = middle.substring(0,1);
+    lastInit = last.substring(0,1);
+    initials = firstInit + middleInit + lastInit;
+    System.out.println(initials);
+  }
 }
 
 // or simply
 public class JFK2 {
-public static void main(String[] args) {
-String first = "John";
-String middle = "Fitzgerald";
-String last = "Kennedy";
-System.out.println(first.substring(0,1) +
-middle.substring(0,1) +
-last.substring(0,1));
-}
+  public static void main(String[] args) {
+    String first = "John";
+    String middle = "Fitzgerald";
+    String last = "Kennedy";
+    System.out.println(first.substring(0,1) +
+    middle.substring(0,1) +
+    last.substring(0,1));
+  }
 }
 
----
+----
 
 === 2.24**생성자 호출**
 
@@ -773,9 +778,10 @@ new className (parameters )
 
 예:
 
-## [source,java]
-
-## new String("test")
+[source,java]
+----
+new String("test")
+----
 
 - new 는 미리 정의된 연산자입니다.
 - String(String s)는 String 클래스의 생성자입니다.
@@ -787,16 +793,15 @@ new className (parameters )
 
 예:
 
-## [source,java]
-
+[source,java]
+----
 public class Hello {
-public static void main(String[] args) {
-String s = new String("hello world");
-System.out.println(s);
+  public static void main(String[] args) {
+    String s = new String("hello world");
+    System.out.println(s);
+  }
 }
-}
-
----
+----
 
 참고 사항:
 
@@ -813,9 +818,10 @@ System.out.println(s);
 
 String class에는 빈 문자열을 생성하는 매개변수가 없는 생성자가 있습니다.
 
-## [source,java]
-
-## String emptystring = new String();
+[source,java]
+----
+String emptystring = new String();
+----
 
 문자열에 대해 본 다른 생성자는 문자열을 parameter로 사용합니다. 따라서
 두 생성자는 서로 다른 서명을 갖습니다. overloading이 발생한 경우입니다.
@@ -826,13 +832,12 @@ Note: 빈 문자열을 null과 혼동하지 마십시오.
 
 다음 코드를 봐보세요.
 
-## [source,java]
-
+[source,java]
+----
 String s1 = new String ("test1");
 String s2 = new String ("test2");
 s1 = s2;
-
----
+----
 
 s1 및 s2 에 대한 참조는 처음에는 새로 생성된 두 개체에 대한 두 개의
 참조입니다. 대입문은 s1 의 참조를 s2 의 참조 (동일한 개체 `test2'' 에
@@ -840,8 +845,8 @@ s1 및 s2 에 대한 참조는 처음에는 새로 생성된 두 개체에 �
 생성된 개체 `test1'' 에 대한 참조는 손실됩니다. (모르면 질문 하세요)
 
 .Untitled 1
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/ee5c28d1-d01b-4603-aaeb-17a6b7b040c4[Untitled
-1]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/ee5c28d1-d01b-4603-aaeb-17a6b7b040c4[Untitled1]
+
 
 프로그램에 의해 ``손실''된 개체가 사용하는 메모리를 복구하는
 작업을 *가비지 수집* 이라고 합니다 . Java에서는 이러한 작업이 런타임
@@ -853,21 +858,20 @@ new 연산자는 object의 새로운 instance를 생성합니다.
 
 예시:
 
-## [source,java]
-
+[source,java]
+----
 String s1 = new String("test");
 String s2 = new String("test");
 String t1 = "test";
 String t2 = "test";
-
----
+----
 
 참조 s1과 s2는 서로 다른 object에 대한 참조이고, t1과 t2는 동일한
 object에 대한 참조입니다.
 
 .Untitled 2
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/e61f39d3-4a33-4b4f-9ed0-95e41dc9efd8[Untitled
-2]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/e61f39d3-4a33-4b4f-9ed0-95e41dc9efd8[Untitled2]
+
 
 === 2.28 불변(Immutable) Object
 
@@ -879,23 +883,22 @@ String 유형의 object는 자신의 상태, 즉 표현하는 문자열을 변�
 
 예시:
 
-## [source,java]
-
+[source,java]
+----
 public class UpperLowerCase {
-public static void main(String[] args) {
-String s, upper, lower;
-s = new String("Hello");
-upper = s.toUpperCase();
-lower = s.toLowerCase();
-System.out.println(s);
-System.out.print("upper = ");
-System.out.println(upper);
-System.out.print("lower = ");
-System.out.println(lower);
+  public static void main(String[] args) {
+    String s, upper, lower;
+    s = new String("Hello");
+    upper = s.toUpperCase();
+    lower = s.toLowerCase();
+    System.out.println(s);
+    System.out.print("upper = ");
+    System.out.println(upper);
+    System.out.print("lower = ");
+    System.out.println(lower);
+  }
 }
-}
-
----
+----
 
 이 프로그램은 3개의 다른 문자열을 구성합니다.(더 이상 수정되지 않음)
 
@@ -920,20 +923,19 @@ image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/b04ea382-7
 작용이라고 합니다.* 이러한 수정을 수행하는 메서드를 부수 작용이 있는
 메서드라고 합니다.
 
-## [source,java]
-
+[source,java]
+----
 public class SideEffect1 {
-public static void main (String[] args) {
-StringBuffer s = new StringBuffer("test");
-StringBuffer t;
-t = s;
-s.append("!");
-System.out.println(s.toString());
-System.out.println(t.toString());
+  public static void main (String[] args) {
+    StringBuffer s = new StringBuffer("test");
+    StringBuffer t;
+    t = s;
+    s.append("!");
+    System.out.println(s.toString());
+    System.out.println(t.toString());
+  }
 }
-}
-
----
+----
 
 고려사항:
 
@@ -948,30 +950,29 @@ System.out.println(t.toString());
 반환하지만 s.append(``!''); 문에서는 그러한 참조가 사용되지 않습니다.
 
 .Untitled 3
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/4d8c4c63-5a5b-4c85-b2b9-4e2e1f7a747b[Untitled
-3]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/4d8c4c63-5a5b-4c85-b2b9-4e2e1f7a747b[Untitled3]
+
 
 === 2.31 예시: StringBuffer class를 사용한 이름 이니셜
 
 밑에 표는 병훈의 첨부 파일(책 내용X)
 
 .Untitled 4
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/80ab5e9f-476d-495b-bd98-8dce27b20198[Untitled
-4]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/80ab5e9f-476d-495b-bd98-8dce27b20198[Untitled4]
 
-## [source,java]
 
+[source,java]
+----
 public class SideEffect2 {
-public static void main (String[] args) {
-String s = "name surname";
-StringBuffer sbuf = new StringBuffer(s);
-sbuf.replace(0,1,s.substring(0,1).toUpperCase());
-sbuf.replace(5,6,s.substring(5,6).toUpperCase());
-System.out.println(sbuf.toString());
+  public static void main (String[] args) {
+    String s = "name surname";
+    StringBuffer sbuf = new StringBuffer(s);
+    sbuf.replace(0,1,s.substring(0,1).toUpperCase());
+    sbuf.replace(5,6,s.substring(5,6).toUpperCase());
+    System.out.println(sbuf.toString());
+  }
 }
-}
-
----
+----
 
 === 2.32 키보드 입력
 
@@ -981,21 +982,20 @@ JOptionpane class에 정의되어 있으며 이는 결국 swing 라이브러리�
 일부입니다. 이러한 method를 사용하면 다음 스키마에 따라 키보들에서
 입력을 읽을 수 있습니다.
 
-## [source,java]
-
+[source,java]
+----
 import javax.swing.JOptionPane;
 public class KeyboardInput {
-public static void main (String[] args) {
-...
-String inputString = JOptionPane.showInputDialog("Insert a string");
-...
-System.out.println(inputString);
-...
-System.exit(0);
-}
-}
-
----
+  public static void main (String[] args) {
+    ...
+    String inputString = JOptionPane.showInputDialog("Insert a string");
+    ...
+    System.out.println(inputString);
+    ...
+    System.exit(0);
+  }
+} 
+----
 
 - import javax.swing.JOptionPane; -
   javax.swing 라이브러리에서 JOptionPane 클래스를 가져옵니다.
@@ -1013,28 +1013,27 @@ System.exit(0);
   이것이 필요합니다.
 
 .Untitled 5
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/04395610-8c9e-45e6-a5c3-7d0588a70c1a[Untitled
-5]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/04395610-8c9e-45e6-a5c3-7d0588a70c1a[Untitled5]
+
 
 === 2.33 _예: 입력에서 읽은 이름의 이니셜_
 
-## [source,java]
-
+[source,java]
+----
 import javax.swing.JOptionPane;
 
 public class Initials {
-public static void main (String[] args) {
-String fn = JOptionPane.showInputDialog("Insert first name");
-String ln = JOptionPane.showInputDialog("Insert surname");
-String ifn = fn.substring(0,1).toUpperCase();
-String iln = ln.substring(0,1).toUpperCase();
-System.out.println("Name: " + fn + " " + ln);
-System.out.println("Initials: " + ifn + iln);
-System.exit(0);
+  public static void main (String[] args) {
+    String fn = JOptionPane.showInputDialog("Insert first name");
+    String ln = JOptionPane.showInputDialog("Insert surname");
+    String ifn = fn.substring(0,1).toUpperCase();
+    String iln = ln.substring(0,1).toUpperCase();
+    System.out.println("Name: " + fn + " " + ln);
+    System.out.println("Initials: " + ifn + iln);
+    ystem.exit(0);
+  }
 }
-}
-
----
+----
 
 === 2.34 창으로 출력
 
@@ -1042,21 +1041,20 @@ JOptionPane 클래스를 사용하면 출력을 대화 상자 창으로 보내
 가능합니다. 특히 showMessageDialog 메소드를 사용할 수 있습니다. 다음
 프로그램은 그 사용법을 보여줍니다.
 
-## [source,java]
-
+[source,java]
+----
 import javax.swing.JOptionPane;
 
 public class OutputWindow {
-public static void main(String[] args) {
-String name = JOptionPane.showInputDialog("What is your name?");
-name = name.toUpperCase();
-String stringToShow = "Hy " + name + ", how are you?";
-JOptionPane.showMessageDialog(null, stringToShow);
-System.exit(0);
+  public static void main(String[] args) {
+    String name = JOptionPane.showInputDialog("What is your name?");
+    name = name.toUpperCase();
+    String stringToShow = "Hy " + name + ", how are you?";
+    JOptionPane.showMessageDialog(null, stringToShow);
+    System.exit(0);
+  }
 }
-}
-
----
+----
 
 - JOptionPane.showMessageDialog(null,stringToShow); stringToShow 변수 로
   표시된 문자열을 표시하는 대화 상자 창(그림 참조)을 만듭니다 . 첫 번째
@@ -1064,5 +1062,5 @@ System.exit(0);
   나타냅니다.
 
 .Untitled 6
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/92933a93-0486-47e0-b4f2-b3f92e7c7e21[Untitled
-6]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/97264011/92933a93-0486-47e0-b4f2-b3f92e7c7e21[Untitled6]
+
