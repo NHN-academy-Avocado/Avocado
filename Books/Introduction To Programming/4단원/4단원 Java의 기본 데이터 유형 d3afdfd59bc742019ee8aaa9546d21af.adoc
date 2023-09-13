@@ -94,10 +94,10 @@ Example: • 객체에 대한 참조 유형의 변수 사용:
 ----
 
 public class Account {
-public int bal;
-public Account(int x) {
-bal = x;
-}
+  public int bal;
+  public Account(int x) {
+  bal = x;
+  }
 }
 ...
 Account r1, r2;
@@ -157,7 +157,10 @@ image::src/Untitled.png[Untitled]
 [source,java]
 ----
 
-public static void modifyPrimitive(int x) { x = x * 2; } public static voidmain(String[] args) { int num = 5; modifyPrimitive(num); System.out.println(num); // 출력: 5 (변화 없음) }
+public static void modifyPrimitive(int x) { x = x * 2; } 
+public static void main(String[] args) { 
+  int num = 5; modifyPrimitive(num); System.out.println(num); // 출력: 5 (변화 없음) 
+}
 ----
 +
 이 예제에서 *`modifyPrimitive`* 메소드는 **`x`**의 값을 두 배로
@@ -176,18 +179,18 @@ public static void modifyPrimitive(int x) { x = x * 2; } public static 
 ----
 
 class MyClass { 
-int value; 
-MyClass(int value) { 
-this.value = value; 
+  int value; 
+  MyClass(int value) { 
+    this.value = value; 
     } 
 } 
 public static void modifyObject(MyClass obj) {
- obj.value = obj.value * 2; 
+    obj.value = obj.value * 2; 
 } 
 public static voidmain(String[] args) { 
-MyClass myObject = new MyClass(5); 
-modifyObject(myObject);
- System.out.println(myObject.value); // 출력: 10 (수정됨) 
+    MyClass myObject = new MyClass(5); 
+    modifyObject(myObject);
+    System.out.println(myObject.value); // 출력: 10 (수정됨) 
 }
 ----
 +
@@ -206,7 +209,7 @@ _기본 유형의 변수를 수정하는 메서드(즉, 변수에 부작용이_�
 [source,java]
 ----
 public static void increment(int p) {
-p = p + 1;
+  p = p + 1;
 }
 ----
 
@@ -215,9 +218,9 @@ p = p + 1;
 [source,java]
 ----
 public static void main(String[] args){
-int a = 10;
-increment(a);
-System.out.println(a); // prints 10
+  int a = 10;
+  increment(a);
+  System.out.println(a); // prints 10
 }
 ----
 
@@ -232,7 +235,7 @@ System.out.println(a); // prints 10
 [source,java]
 ----
 public static void increment(MyInteger x) {
-x.a = x.a + 1;
+  x.a = x.a + 1;
 }
 ----
 
@@ -243,7 +246,7 @@ x.a = x.a + 1;
 ----
 
 class MyInteger {
-public int a;
+  public int a;
 }
 ----
 
@@ -253,10 +256,10 @@ public int a;
 ----
 
 public static void main(String[] args){
-MyInteger r = new MyInteger();
-r.a = 10;
-increment(r);
-System.out.println(r.a); // prints 11
+  MyInteger r = new MyInteger();
+  r.a = 10;
+  increment(r);
+  System.out.println(r.a); // prints 11
 }
 ----
 
@@ -762,12 +765,12 @@ Specification:소유자의 이름과 성, 유로화 계좌 잔액을 특징으�
 [source,java]
 ----
 public class TestBankAccount {
-public static void main (String[] args) {
-BankAccount ba = new BankAccount("Mario", "Rossi");
-System.out.println("Before the operations: " + ba);
-ba.deposit(1000);
-ba.withdraw(100);
-System.out.println("After the operations: " + ba);
+  public static void main (String[] args) {
+    BankAccount ba = new BankAccount("Mario", "Rossi");
+    System.out.println("Before the operations: " + ba);
+    ba.deposit(1000);
+    ba.withdraw(100);
+    System.out.println("After the operations: " + ba);
 }
 }
 ----
@@ -1380,7 +1383,7 @@ _예:_ 다음은 조건자인 정적 메서드의 정의입니다.
 [source,java]
 ----
 public static boolean implies(boolean a, boolean b) {
-return (!a || b); // not a or b
+  return (!a || b); // not a or b
 }
 ----
 
@@ -1436,7 +1439,7 @@ ____
 x+y가 오버플로를 유발 하면 true를 반환하고 , 그렇지
 않으면 false를 반환합니다 .
 
-[힌트: 첫 번째 x 와 y를 short 유형의 두 변수에 할당하세요 . 그런 다음 두
+힌트: 첫 번째 x 와 y를 short 유형의 두 변수에 할당하세요 . 그런 다음 두
 개의 새 변수를 사용하여 합계 를 계산하고 합계 결과가 바이트에 들어갈 수
 있는지, 즉 -128보다 크거나 같고 다음보다 작거나 같은지 확인하는 부울
 유형의 표현식 결과 를 반환합니다. 127.
@@ -1505,13 +1508,24 @@ ____
 
 *연습 04.8* 다음 프로그램이 실행되면 무엇을 출력하나요?
 
-____
-public class Account \{ public int bal; public Account(int x) \{ bal =
-x; } } public class Exercise_4_8 \{ public static void method(int a,
-Account b) \{ a __= 2; b.bal __= 2; } public static void main(String[]
-args) \{ int c = 100; Account r = new Account(100); method(c,r);
-System.out.println(c + ” ” + r.bal); } }
-____
+public class Account { 
+  public int bal; public Account(int x) { 
+    bal =x; 
+      } 
+    } 
+public class Exercise_4_8{ 
+  public static void method(int a,Account b) { 
+    a= 2; 
+    b.bal= 2; 
+    } 
+  public static void main(String[]args) { 
+    int c = 100; 
+    Account r = new Account(100); 
+    method(c,r);
+    System.out.println(c + ” ” + r.bal); 
+    } 
+    }
+
 
 *연습 04.9* 창고에 보관된 특정 제품의 상품에 대한 정보를
 유지하려면 Product 클래스를 작성하세요 . Product 유형의 각 객체는 제품
@@ -1522,12 +1536,16 @@ ____
 
 사용 예:
 
-____
-public class TestProduct \{ public static void main (String[] args) \{
-Product lamp = new Product(``Lamp 60 Watt'');
-System.out.println(``Before the loading:'' + lamp); lamp.downLoad(1000);
-lamp.upLoad(100); System.out.println(``After the loading:'' + lamp); } }
-____
+
+public class TestProduct { 
+  public static void main (String[] args) {
+    Product lamp = new Product(``Lamp 60 Watt'');
+    System.out.println(``Before the loading:'' + lamp); 
+    lamp.downLoad(1000);
+    lamp.upLoad(100); 
+    System.out.println(``After the loading:'' + lamp); } 
+    }
+
 
 *연습 04.10* 헤더가 있는 메소드 작성
 
