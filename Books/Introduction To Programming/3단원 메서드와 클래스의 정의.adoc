@@ -59,7 +59,7 @@ Java에서는 작업에 대한 추상화가 메서드 개념을 통해 실현�
 매개변수를 입력으로 사용하고 결과를 반환하거나 일부 작업을 수행하는
 블랙박스로 간주될 수 있습니다.
 
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/16d313ea-c50d-48b3-b7fd-c8a3f3aae732
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/16d313ea-c50d-48b3-b7fd-c8a3f3aae732[Untitled]
 
 === 3.4 모듈로 보는 methods
 
