@@ -345,7 +345,7 @@ _참고:_ pa 표현식에 나타나는 변수 값은 메서드 실행으로 �
 다음 그림은 매개변수가 객체에 대한 참조인 경우 매개변수 전달의 예를
 보여줍니다. 기본 데이터 유형인 매개변수의 경우는 단원 4에서 설명합니다.
 
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/da561ef2-244a-476b-9f22-9f21e1e140ee
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/da561ef2-244a-476b-9f22-9f21e1e140ee[Untitled1]
 
 === 3.11 메소드의 실행
 
@@ -435,7 +435,7 @@ b 가 참조하는 객체의 상태가 변경되는 이유는 a 의 경우에
 동일한 객체를 참조하는 반면 concat 메소드는 객체 s 의 상태를 수정하지
 않습니다. , 따라서 a ).
 
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/0299455a-3702-4d78-a32f-87f9c14ab293
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/0299455a-3702-4d78-a32f-87f9c14ab293[Untitled2]
 
 === 3.13 지역변수
 
@@ -789,7 +789,7 @@ _참고:_ 이는 연관된 메모리 위치가 생성될 때 반드시 초기�
 개체에는 고유한 인스턴스 변수가 있습니다. 두 개의 서로 다른 객체에는
 서로 다른 인스턴스 변수가 있습니다.
 
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/4c440088-08e1-45b4-ac7f-c0d96ebf2a68
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/4c440088-08e1-45b4-ac7f-c0d96ebf2a68[Untitled3]
 
 === 3.26 인스턴스 변수의 범위
 
