@@ -1,0 +1,811 @@
+== 8단원: 파일 및 입출력 스트림
+
+== 8.1 파일의 개념
+
+* *파일은* 대용량 저장 장치에 데이터를 영구적으로 저장하는 가장 중요한
+  메커니즘입니다. _영구적이란_ 기계를 꺼도 데이터가 손실되지 않음을
+  의미합니다. 파일에는 다음이 포함될 수 있습니다.
+  ** 프로그램에서는 해석할 수 있지만 사람은 쉽게 해석할 수 없는 형식의
+  데이터( _바이너리 파일_ )
+  ** 표준 방식(예: ASCII 또는 유니코드 사용)으로 코드화되고 사용자가 직접
+  읽을 수 있는 영숫자 문자( _텍스트 파일_ ). 텍스트 파일은 일반적으로
+  일련의 문자를 포함하고 특수 문자로 끝나는 일련의 줄로 구성됩니다.
+  문자(보통 _개행 문자_ ) 예를 들어 하드 디스크의 파일에 저장된 Java
+  프로그램을 고려하면 이 단원에서는 텍스트 파일만 다루게 됩니다.
+* 각 파일은 _이름_ 과 파일이 위치한 _디렉토리 로 특징지어집니다(하드
+  디스크에서 파일을 찾을 수 있는 전체 경로를 파일 이름의 일부로 간주할 수
+  있습니다)._
+* 파일에 대한 가장 중요한 작업은 _생성_ , _읽기_ , _쓰기_ , _이름
+  바꾸기_ , _삭제_ 입니다 . 이러한 모든 작업은 운영 체제(또는 기타 응용
+  프로그램)를 통해 수행되거나 Java 프로그램의 적절한 작업을 통해 수행될 수
+  있습니다.
+
+== 8.2 파일 작업
+
+* *파일을 여는 것은* Java 프로그램 내에서 파일을 조작하고 싶다는 것을
+  운영 체제에 알리는 것을 의미하며, 운영 체제는 그러한 작업이 가능하고
+  허용되는지 여부를 확인합니다. _파일을 여는 방법에는 읽기용으로
+  열기_ 와 _쓰기용으로 열기_ 라는 두 가지 방법이 있습니다 . 이에 따라 운영
+  체제의 동작이 달라집니다. 예를 들어, 두 개의 응용 프로그램에서 두 개의
+  파일을 읽기용으로 동시에 열 수 있지만 쓰기용으로는 열 수 없습니다. 또는
+  CD에 있는 파일을 읽기 위해 열 수 있지만 쓰기 위해 열 수는 없습니다. 많은
+  프로그래밍 언어(Java 포함)에서 쓰기 위해 파일을 여는 것은 실제로 새
+  파일을 만드는 것을 의미합니다.
+* *파일을 닫는다는* 것은 이전에 열었던 파일이 프로그램에서 더 이상
+  사용되지 않음을 운영 체제에 나타내는 것을 의미합니다. 파일을 닫으면
+  파일에 기록된 데이터가 하드 디스크로 효과적으로 전송되도록 하는 효과도
+  있습니다.
+
+== 8.3 예외
+
+* 파일 작업은 일반적으로 프로그램이 처리할 수 없는 예상치 못한 상황을
+  일으킬 수 있습니다(예: 읽기 위해 파일을 열려고 하고 존재하지 않는 파일
+  이름을 지정하는 경우). 이러한 상황을 *예외* 라고 합니다 . 발생한 불편한
+  유형에 따라 분류되며, 적절한 Java 코드를 삽입하여 프로그램에서 처리해야
+  합니다
+* 이 단원에서는 _예외를 생성할 수 있는 문을 사용하는 메서드가 this 를
+  선언해야 한다는_ 점만 알아도 충분합니다 .
+* 예를 들어, 읽기 위해 파일을 여는 메서드는 IOException 유형의 예외를
+  생성할 수 있습니다 . 따라서 이러한 메서드를 호출하는 모든 메서드는
+  자체적으로 해당 형식의 예외를 생성할 수 있음을 명시적으로 선언해야
+  합니다.
+* 메서드가 생성할 수 있는 예외 유형은 throws 절에 지정되며, 이 절은
+  메서드 본문 앞의 메서드 선언에 추가되어야 합니다. 예를 들어:
++
+[source,java]
+----
+public static void main(String[] args) throws IOException {
+    body
+}
+----
+
+== 8.4 텍스트 파일 쓰기
+
+* 파일에 텍스트 문자열을 쓰려면 다음을 수행해야 합니다.
+
+[arabic]
+. 파일 이름과 연관된 FileWriter 클래스의 객체를 생성 하고 방금
+생성된 FileWriter 객체와 연관된 PrintWriter 클래스의 객체를
+생성하여 _쓰기 위해_ 파일을 _엽니다 ._
+. PrintWriter 객체 의 print 및 println 메서드를 사용하여
+파일에 _텍스트를 씁니다_ .
+. 쓰기가 끝나면 파일을 _닫습니다_
++
+ex)
++
+[source,java]
+----
+// 1. opening the file for writing (creation of the file)
+FileWriter f = new FileWriter("test.txt");
+PrintWriter out = new PrintWriter(f);
+// 2. writing text on the file
+out.println("some text to write to the file");
+// 3. closing the output channel and the file
+out.close();
+f.close();
+----
++
+참조:
+* FileWriter 클래스의 생성자를 호출하면 쓸 준비가 된 파일을 만드는
+  효과가 있습니다. 파일이 이미 존재하는 경우 먼저 모든 내용이 지워집니다.
+* 파일의 이전 내용을 지우지 않고 이미 존재하는 파일에 텍스트를
+  추가하려면 FileWriter(String, boolean) 서명이 있는 생성자를 사용해야
+  하며 두 번째 인수에 true 값을 지정해야 합니다 .
+
+== 8.5 파일에 쓰기 위한 프로그램
+
+* 다음 프로그램은 test.txt 라는 텍스트 파일을 생성하고 그 파일에 ``some
+  text write on a file''이라는 문자열을 씁니다 .
++
+[source,java]
+----
+import java.io.*;
+public class WritingOnFile {
+  public static void main(String[] args) throws IOException {
+    // opening the file for writing
+    FileWriter f = new FileWriter("test.txt");
+    // creation of the object for writing
+    PrintWriter out = new PrintWriter(f);
+    // writing text on the file
+    out.println("some text written on a file");
+    // closing the output channel and the file
+    out.close();
+    f.close();
+  }
+}
+----
+
+참조:
+
+* 프로그램은 다음을 선언하여 파일에 액세스할 때 발생할 수 있는 오류를
+  처리해야 합니다.
++
+[source,java]
+----
+public static void main(String[] args)에서 IOException이 발생합니다.
+----
+* 입력/출력을 처리하는 클래스는 java.io 라이브러리의
+  일부이므로 입력/출력을 사용하는 클래스에서 해당 라이브러리를 가져와야
+  합니다.
+
+== 8.6 파일에 쓰기 위한 Loop Schema
+
+파일에 데이터를 쓸 때 일반적으로 다음과 같은 구조의 루프를 사용합니다.
+
+[source,java]
+----
+PrintWriter out = ...
+while (condition ) {
+  out.println(data );
+  ...
+}
+out.close();
+----
+
+참조:
+
+* 루프 종료 조건 _은_ 파일이 아니라 파일에 쓰고 있는 데이터에 따라
+  다릅니다.
+  ** _예:_ 파일에 문자열 배열을 쓰는 방법. 문자열 배열과 파일 이름은 모두
+  매개변수로 메서드에 전달됩니다.
++
+[source,java]
+----
+import java.io.*;
+public static void saveArray(String[] v, String filename) throws IOException {
+  FileWriter f = new FileWriter(filename);
+  PrintWriter out = new PrintWriter(f);
+  for (int i = 0; i < v.length; i++)
+  out.println(v[i]);
+  out.close();
+  f.close();
+}
+----
+
+== 8.7 텍스트 파일에서 읽기
+
+* 파일에서 텍스트 문자열을 읽으려면 다음을 수행해야 합니다.
+  [arabic]
+  . FileReader 클래스의 객체를 생성 하고 방금 생성한 FileReader 객체와
+  연관된 BufferedReader 클래스의 객체를 생성 하여 읽을 파일을 연다 _._
+  . BufferedReader 객체 의 readLine 메서드 를 사용하여 파일에서 텍스트
+  줄을 _읽습니다_ .
+  . 파일 읽기가 끝나면 파일을 닫습니다 .
++
+ex)
++
+[source,java]
+----
+// 1. opening the file for reading
+FileReader f = new FileReader("test.txt");;
+BufferedReader in = new BufferedReader(f);
+// 2. reading a line of text from the file
+String line = in.readLine();
+// 3. closing the file
+f.close();
+----
++
+참조:
+** 읽기 위해 열려는 파일이 존재하지 않으면 FileReader 객체가 생성될
+때 FileNotFoundException 유형의 예외가 발생합니다.
+** 파일을 연 후 첫 번째 줄부터 읽기 시작합니다. 그런 다음
+readLine 메서드를 호출할 때마다 입력을 다음 줄로 진행하여 readLine 을
+호출할 때마다 파일에서 다음 텍스트 줄을 읽게 됩니다.
+
+== 8.8 파일에서 읽는 프로그램
+
+* 다음 프로그램은 test.txt 라는 텍스트 파일을 열고 , 그 파일에서 한 줄의
+  텍스트를 읽고, 비디오에 인쇄합니다.
+
+[source,java]
+----
+import java.io.*;
+public class ReadingFromFile {
+  public static void main(String[] args) throws IOException {
+    // opening the file for reading
+    FileReader f = new FileReader("test.txt");
+    // creation of the object for reading
+    BufferedReader in = new BufferedReader(f);
+    // reading a line of text from the file
+    String line = in.readLine();
+    System.out.println(line);
+    // closing the file
+    f.close();
+  }
+}
+----
+
+참조:
+
+* 또한 이 경우 입력을 실현하는 프로그램은 다음을 선언하여 파일에
+  액세스할 때 발생할 수 있는 오류를 처리해야 합니다.
++
+[source,java]
+----
+public static void main(String[] args)가 IOException을 발생시킵니다.}
+----
+** 프로그램에서 첫 번째 줄부터 시작하여 파일의 내용을 다시 읽어야 하는
+경우 파일을 닫았다가 읽기 위해 다시 열어야 합니다
+
+== 8.9 파일을 일기위한 Loop schema
+
+* 파일에서 일련의 문자열을 읽을 때 일반적으로 다음과 같은 구조의 루프를
+  사용합니다.
++
+[source,java]
+----
+BufferedReader in = ...
+String line = in.readLine();
+while (line != null) {
+  process line
+  line = in.readLine();
+}
+----
+** 위에 설명된 루프 스키마는 파일 라인의 반복을 나타냅니다. 실제로
+readLine 메소드는 파일에서 읽을 데이터가 없는 경우(예: 파일 끝에 있는
+경우) null 값을 반환합니다 . 이러한 조건은 루프 종료를 확인하는 데
+사용됩니다.
+** 예) 파일에서 문자열 배열 읽는 메소드
++
+[source,java]
+----
+public static String[] loadArray(String filename) throws IOException {
+  // We first read the file to count the number of line
+  FileReader f = new FileReader(filename);
+  BufferedReader in = new BufferedReader(f);
+  int n = 0;
+  String line = in.readLine();
+  while (line != null) {
+    n++;
+    line = in.readLine();
+  }
+  f.close();
+  // Creation of the array
+  String[] v = new String[n];
+  // Loop to read the strings from the file into the array
+  f = new FileReader(filename);
+  in = new BufferedReader(f);
+  int i = 0;
+  line = in.readLine();
+  while ((line != null) && (i < n)) {
+    v[i] = line;
+    line = in.readLine();
+    i++;
+  }
+  f.close();
+  return v;
+}
+----
+*** 이 메서드는 파일의 텍스트 줄에 해당하는 문자열 배열을
+반환합니다. (두 개의 루프를 사용하여) 파일을 두 번 읽습니다. 처음에는
+파일의 줄 수를 계산하여 배열의 크기를 결정할 수 있습니다. 두 번째로
+배열을 채우는 문자열을 읽습니다. 또한 동일한 파일에서 데이터를 두 번
+읽으려면 파일을 닫았다가 다시 열어야 합니다.
+
+== 8.10 자바에서 파일 이름 변경 및 삭제
+
+* *파일을 삭제* 하려면 (즉, 대용량 저장 장치에서 완전히
+  제거하려면) 삭제할 파일 이름으로 생성된 File 유형 의 객체에 대해 delete
+  메소드를 호출합니다.
++
+[source,java]
+----
+File f1 = new File("garbage.txt");
+boolean b = f1.delete();
+// if b is true, then the file has been deleted successfully
+----
+* _참고:_ File 클래스의 생성자는 파일이 존재하지 않는 경우 예외를
+  생성하지 않습니다. 삭제 작업의 결과는 delete 메서드에 의해 반환됩니다.
+* *file 의 이름을 바꾸* 려면 이름을 바꿀 파일과 파일에 부여할 새 이름을
+  각각 나타내는 File 유형의 두 개체에 renameTo 메서드를 호출합니다 .
++
+[source,java]
+----
+File f1 = new File("oldname.txt");
+File f2 = new File("newname.txt");
+boolean b = f1.renameTo(f2);
+// if b is true, then the file has been renamed successfully
+----
+** oldname.txt 파일이 있는 경우 newname.txt 파일로 이름이
+변경됩니다 . newname.txt 라는 파일이 이미 존재하는 경우 해당 파일을
+덮어씁니다. 이름 바꾸기 작업의 결과는 renameTo 메서드에 의해 반환됩니다.
+
+== 8.11 입출력 스트림
+
+* Java는 모든 입력 및 출력 장치를 처리하는 공통 방법을 정의하며, 이
+  방법은 데이터(문자) 시퀀스의 생성자(producer) 및 소비자(consumer)로
+  나타냅니다. 스트림(stream) 개념은 입력 장치(input device)에서 생성된
+  데이터 시퀀스를 나타내거나 출력 장치(output device)에서 소비된 데이터
+  시퀀스를 나타냅니다.
+  ** 입력 스트림의 예: 키보드, 파일, 인터넷 자원
+  ** 출력 스트림의 예: 동영상, 파일
+  ** 다양한 스트림을 정의하는 데 사용되는 모든 클래스는 다음 다이어그램에
+  따라 InputStream 및 OutputStream 클래스에서 파생됩니다 .
++
+
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/783fca92-f4e9-47ff-b95f-7e1007477eca[Untitled]
+*** 이 모든 입력/출력 장치의 공통 처리 방식은 입력 채널을 위한 리더와
+출력 채널을 위한 쓰기를 특정 장치와 독립적으로 정의할 수 있도록 합니다.
+
+== 8.12 입력 스트림
+
+* 키보드: 우리는 InputStream 클래스의 미리 정의된
+  객체인 System.in을 사용합니다 .
+  ** ex) InputStream is = http://system.in/[System.in];
+* 파일:
+  ** 읽기 위해 열려는 파일을 식별하는 File 개체 에
+  연결된 FileInputStream 클래스 ( InputStream 의 하위 클래스)의 개체를
+  만듭니다.
+  *** ex)
++
+[source,java]
+----
+FileInputStream is = new FileInputStream("data.txt");
+----
+** 파일 이름으로 시작하는 File 객체를 생성 하고 이러한 객체를 사용하여
+FileInputStream을 생성 할 수도 있습니다 .
+** ex)
++
+[source,java]
+----
+File f = new File("data.txt");
+FileInputStream is = new FileInputStream(f);
+----
+* 인터넷: 우리는 읽기 위해 열려는 인터넷 자원을 식별하는
+  클래스 URL (librery java.net 에 정의됨)의 객체를 생성하고
+  해당하는 InputStream 객체를 반환하는 openStream 메소드를 호출합니다 .
+  ** ex)
++
+[source,java]
+----
+URL u = new URL("http://www.inf.unibz.it/");
+InputStream is = u.openStream();
+----
+
+== 8.13 출력 스트림
+
+* 비디오: PrintStream 클래스 ( OutputStream 의 하위 클래스)의 미리
+  정의된 개체 System.out을 사용합니다 .
+  ** ex)
++
+[source,java]
+----
+OutputStream os = System.out;
+----
+* 파일: 쓰기 위해 열 파일을 식별하는 File 객체와
+  연관된 FileOutputStream 클래스 ( OutputStream 의 하위 클래스 ) 의 객체를
+  만듭니다.
+  ** ex)
++
+[source,java]
+----
+FileOutputStream os = new FileOutputStream("data.txt");
+----
++
+참조: 단순히 출력 스트림을 사용하는 것만으로는 인터넷 리소스에 쓸 수
+없습니다.
+
+== 8.14 입력 스트림에서 읽고 출력 스트림에 쓰기
+
+* 입력 스트림에서 읽고 출력 스트림에 쓰는 작업은 표준화되어 있습니다.
+  즉, 사용되는 특정 스트림에 의존하지 않습니다. 이는 동일한 Java 명령문을
+  사용하여 키보드, 파일 또는 인터넷에서 문자열을 읽을 수 있음을
+  의미합니다. 이러한 작업은 다음 다이어그램에 표시된 클래스를 활용합니다.
++
+
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/80580473/4119e4d0-73d5-47d3-8eb6-37722b609b02[Untitled1]
+* ex1) 입력 스트림에서 읽기
++
+[source,java]
+----
+InputStream is = ...; // keyboard, file or Internet
+InputStreamReader isr = new InputStreamReader(is);
+BufferedReader br = new BufferedReader(isr);
+String line = br.readLine();
+----
+* ex2) 출력 스트림에 쓰기 (1)
++
+[source,java]
+----
+OutputStream os = ...; // video or file
+PrintWriter pw = new PrintWriter(os);
+pw.println("Hello");
+----
+* ex2) 출력 스트림에 쓰기 (2)
++
+[source,java]
+----
+OutputStream os = ...; // video or file
+PrintWriter pw = new PrintWriter(os);
+pw.println("Hello");
+----
+
+== 8.15 단어의 복수형을 결정하는 프로그램(때때로)
+
+[source,java]
+----
+import java.io.*;
+
+public class Plural {
+  public static void main(String[] args) throws IOException {
+    InputStreamReader isr = new InputStreamReader(System.in);
+    BufferedReader keyboard = new BufferedReader(isr);
+    System.out.println("Insert a word:");
+    String line = keyboard.readLine();
+    System.out.print(line);
+    System.out.println("s");
+  }
+}
+----
+
+== 8.16 읽기 쓰기의 인터리빙(Interleaving)
+
+* 일반적으로 프로그램은 입력과 출력을 모두 수행하며 이들은
+  인터리브됩니다. _출력 작업은 출력 버퍼를_ 통해 내부적으로 처리되며 ,
+  프로그램과 상호 작용하는 사용자의 관점에서 인터리브된 입력 및 출력
+  기능이 제대로 작동하도록 하려면 다음 입력을 얻기 전에 출력 버퍼를 비워야
+  합니다. 이는 OutputStream 개체 에 연결된 플러시 메서드를 사용하여 수행할
+  수 있습니다 .
++
+[source,java]
+----
+import java.io.*;
+
+public class Plural2 {
+  public static void main(String[] args) throws IOException {
+    InputStreamReader isr = new InputStreamReader(System.in);
+    BufferedReader keyboard = new BufferedReader(isr);
+    System.out.print("Insert a word: ");
+    System.out.flush();
+    String line = keyboard.readLine();
+    System.out.println("The plural of " + line + " is " + line + "s.");
+  }
+}
+----
+
+== 8.17 일반화된 입출력
+
+* 다음 프로그램에서는 이러한 스트림을 읽고 쓰는 작업에서 입/출력 스트림
+  생성을 분리하는 방법을 보여줍니다.
++
+[source,java]
+----
+import java.io.*;
+import java.net.*;
+
+public class IOStreams {
+    public static void readWrite(InputStream in, OutputStream out) throws IOException {
+      InputStreamReader isr = new InputStreamReader(in);
+      BufferedReader br = new BufferedReader(isr);
+      PrintStream ps = new PrintStream(out);
+      String line = br.readLine();
+      while (line != null) {
+        ps.println(line);
+        line = br.readLine();
+        }
+     }
+
+    public static void main(String[] args) throws IOException {
+        // Reads from the Internet and writes to a file
+        System.out.println("*** Internet -> File ***");
+        URL u = new URL("http://www.inf.unibz.it/");
+        InputStream net = u.openStream();
+        File fout = new File("CShome.html");
+        FileOutputStream fileos = new FileOutputStream(fout);
+        readWrite(net, fileos);
+        fileos.close();
+        // Reads from a file and writes to video
+        System.out.println("*** File -> Video ***");
+        File fin = new File("CShome.html");
+        FileInputStream fileis = new FileInputStream(fin);
+        readWrite(fileis, System.out);
+        fileis.close();
+    }
+}
+----
+
+== 8.18 읽기를 위한 static 메소드
+
+* 입력 채널(예: 텍스트 파일)에서 들어오는 데이터에 따라 객체를 생성하기
+  위해서는 입력 채널에서 데이터를 읽어 해당 데이터가 포함된 클래스의
+  객체를 생성하고 반환하는 정적 메서드를 정의하는 것이 일반적입니다.
+  방법이 정의되어 있습니다.
+* 예를 들어, 클래스의 각 객체가 해당 이름과 성에 대한 정보로
+  특징지어지는 Person 클래스를 생각해 보세요. 응용 프로그램에서 처리하려는
+  사람에 대한 정보가 각 사람에 대해 다음과 같은 두 줄을 포함하는 텍스트
+  파일에 저장되어 있다고 가정합니다. name(이름), surname(성)
+* 그런 다음 Person 클래스에 다음과 같이 파일에서 데이터를 읽고 Person
+  객체를 생성하기 위한 정적 메서드를 정의할 수 있습니다.
++
+[source,java]
+----
+import java.io.*;
+
+public class Person {
+private String name, surname;
+
+    public Person(String n, String c) {
+        name = n;
+        surname = c;
+    }
+
+    public static Person read(BufferedReader br) throws IOException {
+        String s = br.readLine();
+        if (s == null)
+            return null;
+        else
+            return new Person(s, br.readLine());
+    }
+}
+----
++
+참조: 입력 채널에 사람에 대한 데이터가 더 이상 없거나 입력 채널에서 읽은
+데이터가 포함된 Person 클래스의 객체가 없으면 read 정적
+메서드는 null 값을 반환합니다 . 이 메서드는 다음 루프를 사용하여 파일에
+포함된 모든 사람에 대한 데이터를 읽고 처리하는 데 사용할 수 있습니다.
++
+[source,java]
+----
+BufferedReader br = ...;
+Person p = Person.read(br);
+while (p != null) {
+  process p
+  p = Person.read(br);
+}
+----
+
+== 8.19 Exercise: car sales
+
+* Specification
+  ** 신차와 중고차를 판매하는 프로그램을 실현하고 싶습니다. 판매할 각
+  자동차에 대해 자동차에 대한 정보가 텍스트 파일에 저장됩니다.
+  ** 단일 자동차를 처리하기 위해 Car 클래스를 구현합니다 . 각 자동차의
+  특징은 모델, 제조 연도, 주행 거리, 가격 등입니다. 신차는 주행거리가
+  0이라는 점으로 구분할 수 있습니다.
+  ** Car 클래스는 다음 메서드를 내보내야 합니다.
+  *** 자동차에 관한 모든 데이터를 매개변수로 제공하여 자동차 객체를
+  생성하는 생성자
+  *** 자동차에 대한 데이터를 얻는 데 적합한 get메소드
+  *** Object 에서 상속된 toString 메서드를 재정의 하고 자동차에 대한
+  데이터가 포함된 문자열을 반환하는 toString 메서드
+  *** boolean equalTo(Car c) : 자동차가 모든 데이터에서 자동차 c 와
+  일치하면 true를 반환 하고 그렇지 않으면 false를 반환합니다 .
+* 각각의 객체가 판매할 자동차 목록을 나타내는 CarList 클래스를
+  구현합니다 . CarList 객체 는 판매할 자동차에 대한 데이터를 직접 저장하지
+  않지만, 다음 형식에 따라 해당 데이터가 저장되는 텍스트 파일의 이름을
+  유지합니다.
+* CarList 클래스는 다음 메서드를 내보내야 합니다.
+  ** CarList(String filename) : 판매할 자동차에 대한 데이터가 저장되는
+  파일의 이름을 나타내는 String 유형의 매개변수가 있는 생성자입니다 .
+  ** int countNewCars() : 판매할 자동차 목록에 있는 새 자동차의 수를
+  반환합니다.
+  ** Car MostExpensiveCar() : 판매할 자동차 목록에서 가장 비싼 자동차에
+  해당하는 Car 객체를 반환합니다 .
+  ** void addCar(Car c) : 판매할 자동차 목록의 끝에 자동차 c를 추가합니다.
+  ** void Remove(Car c) : 해당 자동차가 있는 경우 데이터가 c 의 데이터와
+  일치하는 자동차를 판매하기 위해 자동차 목록에서 제거하고 , 그렇지 않으면
+  목록을 변경하지 않고 그대로 둡니다.
+
+== 8.20 Car sales: 객체의 표현
+
+* Car 및 carList 클래스의 객체를 나타내는 데 사용할 인스턴스 변수를
+  결정합니다 .
+* Car 클래스
++
+[source,java]
+----
+public class Car {
+// representation of the objects of the class
+  private String model;
+  private int year;
+  private int km;
+  private double price;
+  // public methods that realize the requested functionalities
+}
+----
+* CarList 클래스
++
+[source,java]
+----
+public class CarList {
+// representation of the objects of the class
+  private String filename;
+  // public methods that realize the requested functionalities
+}
+----
+** 이제 클라이언트가 Car 및 CarList 클래스의 개체를 사용할 수 있는
+클래스의 인터페이스를 선택할 수 있습니다 . 특히 각 기능에 대해 이를
+실현하고 해당 헤더를 결정하는 공개 메서드를 정의해야 합니다.
+
+== 8.21 Car sales: public interface
+
+* 이제 클라이언트가 Car 및 CarList 클래스의 개체를 사용할 수 있는
+  클래스의 인터페이스를 선택할 수 있습니다 . 특히 각 기능에 대해 이를
+  실현하고 해당 헤더를 결정하는 공개 메서드를 정의해야 합니다.
+* Car 클래스는 다음 뼈대를 가집니다.
++
+[source,java]
+----
+public class Car {
+// representation of the objects of the class
+  private String model;
+  private int year;
+  private int km;
+  private double price;
+
+    // public methods that realize the requested functionalities
+  public Car(String m, int y, int k, double p) { ... }
+
+  public String toString() { ... }
+
+  public String getModel() { ... }
+
+  public int getYear() { ... }
+
+  public int getKm() { ... }
+
+  public double getPrice() { ... }
+
+  public boolean equalTo(Car c) { ... }
+
+  public static Car read(BufferedReader br) throws IOException { ... }
+}
+----
+* CarList 클래스는 다음 뼈대를 가집니다.
++
+[source,java]
+----
+public class CarList {
+// representation of the objects of the class
+  private String filename;
+
+      // public methods that realize the requested functionalities
+  public CarList (String fn) { ... }
+
+  public int countNewCars() throws IOException { ... }
+
+  public Car mostExpensiveCar() throws IOException { ... }
+
+  public void addCar(Car c) throws IOException { ... }
+
+  public void removeCar(Car c) throws IOException { ... }
+}
+----
+
+== 8.22 Car sales: solution
+
+* Car 클래스
++
+[source,java]
+----
+import java.io.*;
+
+public class Car {
+    private String model;
+    private int year;
+    private int km;
+    private double price;
+
+    public Car(String m, int y, int k, double p) {
+        model = m;
+        year = y;
+        km = k;
+        price = p;
+    }
+
+    public String toString() {
+        return model + ", year: " + year + ", km: " + km + ", price: " + price;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getKm() {
+        return km;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public boolean equalTo(Car c) {
+        return this.model.equals(c.model) && this.year == c.year && this.km == c.km
+                && this.price == c.price;
+    }
+
+    public static Car read(BufferedReader br) throws IOException {
+        String s = br.readLine();
+        if (s == null)
+            return null;
+        else
+            return new Car(s, Integer.parseInt(br.readLine()), Integer.parseInt(br.readLine()),
+                    Double.parseDouble(br.readLine()));
+    }
+}
+----
+* CarList 클래스
++
+[source,java]
+----
+import java.io.*;
+
+public class CarList {
+private String filename;
+
+    public CarList(String fn) {
+        filename = fn;
+    }
+
+    public int countNewCars() throws IOException {
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        int count = 0;
+        Car c = Car.read(br);
+        while (c != null) {
+            if (c.getKm() == 0)
+                count++;
+            c = Car.read(br);
+        }
+        br.close();
+        return count;
+    }
+
+    public Car mostExpensiveCar() throws IOException {
+        // this is the second alternative for opening a file for reading
+        FileInputStream is = new FileInputStream(filename);
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        double max = 0;
+        Car cmax = null;
+        Car c = Car.read(br);
+        while (c != null) {
+            if (c.getPrice() > max) {
+                max = c.getPrice();
+                cmax = c;
+            }
+            c = Car.read(br);
+        }
+        br.close();
+        return cmax;
+    }
+
+    public void addCar(Car c) throws IOException {
+        FileWriter fw = new FileWriter(filename, true); // open file in append mode
+        PrintWriter pw = new PrintWriter(fw);
+        pw.println(c.getModel());
+        pw.println(c.getYear());
+        pw.println(c.getKm());
+        pw.println(c.getPrice());
+        pw.close();
+    }
+
+    public void removeCar(Car c) throws IOException {
+        File f = new File(filename);
+        FileInputStream is = new FileInputStream(f);
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        // this is the second alternative for opening a file for writing
+        File ftemp = new File("cars-temporary.txt");
+        FileOutputStream os = new FileOutputStream(ftemp);
+        PrintWriter pw = new PrintWriter(os);
+        Car curr = Car.read(br);
+        while (curr != null) {
+            if (!curr.equalTo(c)) {
+                pw.println(curr.getModel());
+                pw.println(curr.getYear());
+                pw.println(curr.getKm());
+                pw.println(curr.getPrice());
+            }
+            curr = Car.read(br);
+        }
+        br.close();
+        pw.close();
+        ftemp.renameTo(f);
+    }
+}
+----
