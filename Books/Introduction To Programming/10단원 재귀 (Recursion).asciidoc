@@ -729,8 +729,7 @@ _act_(_n_) =
 +
 image::https://www.inf.unibz.it/~calvanese/teaching/04-05-ip/lecture-notes/uni10/img12.png[https://www.inf.unibz.it/~calvanese/teaching/04-05-ip/lecture-notes/uni10/img12.png]
 +
-_n_ > 1 인 경우 ``1 +’’를 무시하더라도 _act_ ( _n_ ) = 2 n-1 이
-됩니다 . _따라서 act_ ( _n_ ) > 2 n-1 이 됩니다 .
+_n_ > 1 인 경우 ``1 +’’를 무시하더라도 _act_ ( _n_ ) = 2 n-1 이 됩니다 . _따라서 act_ ( _n_ ) > 2 n-1 이 됩니다 .
 +
 하노이 타워 문제의 경우 활성화(즉, 이동)의 기하급수적인 수는 문제의 본질적인 특성이므로 더 나은 해결책은 없습니다.
 +
@@ -742,13 +741,13 @@ _n_ > 1 인 경우 ``1 +’’를 무시하더라도 _act_ ( _n_ ) = 2 n-1
 횡단은 황무지를 가로지르는 경로, 즉 황무지를 왼쪽(열 0)에서 오른쪽(열 C-1)으로 가로지르는 인접한 육지 구역의 시퀀스입니다.
 우리는 각 단계에서 오른쪽으로 이동하는, 즉 열 C의 영역에서 열 C + 1의 영역으로 이동하는 횡단에 관심이 있습니다. 즉, 다음 그림과 같이 < r, c > 위치의 영역은 < r - 1, c + 1 >, < r, c + 1 > 및 < r + 1, c + 1 > 위치의 영역에 인접한 것으로 간주됩니다.
 +
-image::10%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%20(Recursion)%20e47db1ceb6f04185b92b0336549674b3/1.png[Untitled]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/66411937/e32c3cee-f3f4-4321-b0b0-4927cd743e1c[Untitled]
 +
-다음 그림에서 ’*’ 문자는 육지 구역을 나타내고, `o' 문자는 수역 구역을
-나타냅니다. 무어 1은 횡단이 없는 반면, 무어 2는 횡단이 있습니다(그림
-참조).
+다음 그림에서 ’*’ 문자는 육지 구역을 나타내고, `o' 문자는 수역 구역을 나타냅니다. 무어 1은 횡단이 없는 반면, 무어 2는 횡단이 있습니다(그림 참조).
 +
-image::10%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%20(Recursion)%20e47db1ceb6f04185b92b0336549674b3/2.png[Untitled]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/66411937/e7d99c86-a0d3-4007-8679-1f4dfde4f4ea)
+
+[Untitled]
 +
 적어도 하나의 트래버스가 있는지 확인하고, 존재하는 경우 인쇄하려고 합니다(트래버스가 두 개 이상 있는 경우, 찾은 첫 번째 트래버스를 인쇄하면 충분합니다).
 +
@@ -918,7 +917,7 @@ public class Traversal {
 +
 _A_ ( _m_ , _n_ ) =
 +
-image::10%E1%84%83%E1%85%A1%E1%86%AB%E1%84%8B%E1%85%AF%E1%86%AB%20%E1%84%8C%E1%85%A2%E1%84%80%E1%85%B1%20(Recursion)%20e47db1ceb6f04185b92b0336549674b3/3.png[Untitled]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/66411937/6576f3b2-b556-4d7b-9417-de411f5dface[Untitled]
 +
 Ackermann 함수는 _매우_ 빠르게 증가합니다(비기본 함수입니다). _A_ ( _x_ , _x_ ) 는 어떤 지수 타워 2 ^2 … 2 x 보다 빠르게 증가합니다 .
 +
