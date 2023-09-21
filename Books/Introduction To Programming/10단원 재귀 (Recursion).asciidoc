@@ -745,9 +745,7 @@ image::https://github.com/NHN-academy-Avocado/Avocado/assets/66411937/e32c3cee-f
 +
 다음 그림에서 ’*’ 문자는 육지 구역을 나타내고, `o' 문자는 수역 구역을 나타냅니다. 무어 1은 횡단이 없는 반면, 무어 2는 횡단이 있습니다(그림 참조).
 +
-image::https://github.com/NHN-academy-Avocado/Avocado/assets/66411937/e7d99c86-a0d3-4007-8679-1f4dfde4f4ea)
-
-[Untitled]
+image::https://github.com/NHN-academy-Avocado/Avocado/assets/66411937/e7d99c86-a0d3-4007-8679-1f4dfde4f4ea[Untitled]
 +
 적어도 하나의 트래버스가 있는지 확인하고, 존재하는 경우 인쇄하려고 합니다(트래버스가 두 개 이상 있는 경우, 찾은 첫 번째 트래버스를 인쇄하면 충분합니다).
 +
